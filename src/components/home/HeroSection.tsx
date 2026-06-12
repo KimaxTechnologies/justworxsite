@@ -14,46 +14,20 @@ export function HeroSection() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section className="relative flex min-h-[100svh] items-end overflow-hidden bg-canvas pb-28 pt-32 md:items-center md:pb-0 md:pt-0">
-      <div className="pointer-events-none absolute inset-0" aria-hidden>
-        <Image
-          src={heroCollage}
-          alt=""
-          fill
-          priority
-          className="object-cover object-[72%_center] md:object-[68%_center]"
-          sizes="100vw"
-        />
+    <section className="relative overflow-hidden bg-canvas pb-28 pt-32 md:min-h-[100svh] md:pb-0 md:pt-0">
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background: `
+            radial-gradient(ellipse 55% 45% at 88% 18%, color-mix(in srgb, var(--stone) 18%, transparent), transparent 70%),
+            radial-gradient(ellipse 40% 35% at 12% 88%, color-mix(in srgb, var(--linen) 14%, transparent), transparent 65%)
+          `,
+        }}
+        aria-hidden
+      />
 
-        {/* Keep copy legible while letting textures breathe on the right */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `
-              linear-gradient(
-                95deg,
-                color-mix(in srgb, var(--canvas) 96%, transparent) 0%,
-                color-mix(in srgb, var(--canvas) 88%, transparent) 38%,
-                color-mix(in srgb, var(--canvas) 42%, transparent) 62%,
-                transparent 100%
-              ),
-              linear-gradient(
-                to top,
-                color-mix(in srgb, var(--canvas) 92%, transparent) 0%,
-                transparent 28%
-              ),
-              linear-gradient(
-                to bottom,
-                color-mix(in srgb, var(--canvas) 70%, transparent) 0%,
-                transparent 18%
-              )
-            `,
-          }}
-        />
-      </div>
-
-      <div className="editorial-container relative z-10 w-full">
-        <div className="max-w-3xl md:max-w-4xl">
+      <div className="editorial-container relative z-10 flex min-h-[calc(100svh-8rem)] flex-col gap-12 md:min-h-[100svh] md:flex-row md:items-center md:justify-between md:gap-16 lg:gap-20">
+        <div className="max-w-3xl md:max-w-xl lg:max-w-2xl">
           <motion.p
             className="label-caps mb-7"
             initial={prefersReducedMotion ? false : fadeUp.hidden}
@@ -97,12 +71,32 @@ export function HeroSection() {
             </a>
             <Link
               href="/work"
-              className="inline-flex h-12 items-center justify-center border border-stone/25 bg-canvas/90 px-8 font-sans text-xs font-medium uppercase tracking-[0.15em] text-espresso backdrop-blur-sm transition-colors hover:bg-linen/60 sm:h-11"
+              className="inline-flex h-12 items-center justify-center border border-stone/25 bg-canvas/90 px-8 font-sans text-xs font-medium uppercase tracking-[0.15em] text-espresso transition-colors hover:bg-linen/60 sm:h-11"
             >
               {homeCopy.hero.ctaSecondary}
             </Link>
           </motion.div>
         </div>
+
+        <motion.div
+          className="w-full md:w-[min(44vw,34rem)] md:shrink-0 lg:w-[min(40vw,36rem)]"
+          initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
+          animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
+          transition={{ delay: 0.25, duration: 0.7 }}
+        >
+          <div className="panel-raised moodboard-frame relative mx-auto aspect-[655/578] w-full max-w-[34rem] overflow-hidden md:mx-0 md:max-w-none">
+            <Image
+              src={heroCollage}
+              alt="Abstract material moodboard collage"
+              fill
+              priority
+              quality={100}
+              unoptimized
+              className="object-cover"
+              sizes="(max-width: 768px) 90vw, 34rem"
+            />
+          </div>
+        </motion.div>
       </div>
 
       <motion.div
