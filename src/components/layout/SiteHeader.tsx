@@ -34,7 +34,7 @@ export function SiteHeader() {
         scrolled
           ? "glass-warm border-b border-border/40 py-3"
           : isHome
-            ? "bg-transparent py-5 md:py-6"
+            ? "border-b border-stone/10 bg-[#dad0c9] py-5 md:py-6"
             : "bg-canvas/55 py-5 backdrop-blur-md md:py-6",
       )}
     >
