@@ -17,6 +17,7 @@ import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const isHome = pathname === "/";
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -32,7 +33,9 @@ export function SiteHeader() {
         "fixed inset-x-0 top-0 z-50 transition-all duration-500",
         scrolled
           ? "glass-warm border-b border-border/40 py-3"
-          : "bg-canvas/55 py-5 backdrop-blur-md md:py-6",
+          : isHome
+            ? "bg-transparent py-5 md:py-6"
+            : "bg-canvas/55 py-5 backdrop-blur-md md:py-6",
       )}
     >
       <div className="editorial-container flex items-center justify-between">

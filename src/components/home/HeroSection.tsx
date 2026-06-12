@@ -4,32 +4,71 @@ import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
+import { TypewriterText } from "@/components/ui/TypewriterText";
 import { getWhatsAppUrl } from "@/lib/config/site";
 import { homeCopy } from "@/lib/content/copy";
 import { fadeUp } from "@/lib/motion/variants";
 
-const heroCollage = "/moodboard/hero-collage.png";
+const heroFull = "/moodboard/hero-full.png";
+const heroTaupe = "#dad0c9";
 
 export function HeroSection() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-canvas pb-28 pt-32 md:min-h-[100svh] md:pb-0 md:pt-0">
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background: `
-            radial-gradient(ellipse 55% 45% at 88% 18%, color-mix(in srgb, var(--stone) 18%, transparent), transparent 70%),
-            radial-gradient(ellipse 40% 35% at 12% 88%, color-mix(in srgb, var(--linen) 14%, transparent), transparent 65%)
-          `,
-        }}
-        aria-hidden
-      />
+    <section
+      className="relative min-h-[100svh] overflow-hidden"
+      style={{ backgroundColor: heroTaupe }}
+    >
+      <div className="pointer-events-none absolute inset-0" aria-hidden>
+        <motion.div
+          className="absolute inset-[-2%] will-change-transform"
+          animate={
+            prefersReducedMotion
+              ? undefined
+              : {
+                  y: [0, -10, 0, 6, 0],
+                  rotate: [0, 0.15, 0, -0.12, 0],
+                }
+          }
+          transition={{
+            duration: 14,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
+          <Image
+            src={heroFull}
+            alt=""
+            fill
+            priority
+            quality={100}
+            unoptimized
+            className="object-cover object-[58%_center] md:object-[56%_center]"
+            sizes="100vw"
+          />
+        </motion.div>
 
-      <div className="editorial-container relative z-10 flex min-h-[calc(100svh-8rem)] flex-col gap-12 md:min-h-[100svh] md:flex-row md:items-center md:justify-between md:gap-16 lg:gap-20">
-        <div className="max-w-3xl md:max-w-xl lg:max-w-2xl">
+        <div
+          className="absolute inset-y-0 left-0 w-[42%]"
+          style={{
+            background: `linear-gradient(90deg, ${heroTaupe} 0%, color-mix(in srgb, ${heroTaupe} 88%, transparent) 72%, transparent 100%)`,
+          }}
+        />
+
+        <div
+          className="absolute inset-0 md:hidden"
+          style={{
+            background:
+              "linear-gradient(to bottom, color-mix(in srgb, #dad0c9 35%, transparent) 0%, transparent 40%, color-mix(in srgb, #dad0c9 50%, transparent) 100%)",
+          }}
+        />
+      </div>
+
+      <div className="relative z-10 flex min-h-[100svh] flex-col px-6 pb-28 pt-28 md:px-10 md:pb-16 md:pt-32">
+        <div className="flex flex-1 flex-col">
           <motion.p
-            className="label-caps mb-7"
+            className="label-caps mb-5 max-w-xs text-espresso/75 md:absolute md:left-[6%] md:top-[22%] md:mb-0 lg:left-[7%]"
             initial={prefersReducedMotion ? false : fadeUp.hidden}
             animate={prefersReducedMotion ? undefined : fadeUp.visible}
             transition={{ delay: 0.1 }}
@@ -37,29 +76,18 @@ export function HeroSection() {
             {homeCopy.hero.eyebrow}
           </motion.p>
 
-          <motion.h1
-            className="font-heading text-[2.35rem] leading-[1.08] text-balance text-espresso md:text-6xl lg:text-[4.25rem]"
-            initial={prefersReducedMotion ? false : fadeUp.hidden}
-            animate={prefersReducedMotion ? undefined : fadeUp.visible}
-            transition={{ delay: 0.2 }}
-          >
-            {homeCopy.hero.headline}
-          </motion.h1>
-
-          <motion.p
-            className="mt-7 max-w-lg font-sans text-base font-light leading-[1.75] text-taupe md:mt-9 md:text-lg"
-            initial={prefersReducedMotion ? false : fadeUp.hidden}
-            animate={prefersReducedMotion ? undefined : fadeUp.visible}
-            transition={{ delay: 0.35 }}
-          >
-            {homeCopy.hero.subheadline}
-          </motion.p>
+          <TypewriterText
+            text={homeCopy.hero.headline}
+            as="h1"
+            className="font-heading max-w-[11rem] text-[2rem] leading-[1.1] text-espresso sm:max-w-sm sm:text-[2.35rem] md:absolute md:left-[6%] md:top-[28%] md:max-w-md md:text-5xl lg:left-[7%] lg:max-w-lg lg:text-6xl xl:max-w-xl xl:text-[4.25rem]"
+            startDelayMs={500}
+          />
 
           <motion.div
-            className="mt-11 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4"
+            className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4 md:absolute md:left-[6%] md:top-[58%] md:mt-0 lg:left-[7%]"
             initial={prefersReducedMotion ? false : fadeUp.hidden}
             animate={prefersReducedMotion ? undefined : fadeUp.visible}
-            transition={{ delay: 0.5 }}
+            transition={{ delay: 2.8 }}
           >
             <a
               href={getWhatsAppUrl()}
@@ -71,51 +99,22 @@ export function HeroSection() {
             </a>
             <Link
               href="/work"
-              className="inline-flex h-12 items-center justify-center border border-stone/25 bg-canvas/90 px-8 font-sans text-xs font-medium uppercase tracking-[0.15em] text-espresso transition-colors hover:bg-linen/60 sm:h-11"
+              className="inline-flex h-12 items-center justify-center border border-stone/30 bg-canvas/75 px-8 font-sans text-xs font-medium uppercase tracking-[0.15em] text-espresso backdrop-blur-sm transition-colors hover:bg-canvas/90 sm:h-11"
             >
               {homeCopy.hero.ctaSecondary}
             </Link>
           </motion.div>
         </div>
 
-        <motion.div
-          className="w-full md:w-[min(44vw,34rem)] md:shrink-0 lg:w-[min(40vw,36rem)]"
-          initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
-          animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
-          transition={{ delay: 0.25, duration: 0.7 }}
+        <motion.p
+          className="mt-auto max-w-[16rem] self-end text-right font-sans text-sm font-light leading-relaxed text-espresso/85 sm:max-w-xs sm:text-base md:absolute md:bottom-[10%] md:right-[6%] md:max-w-[15rem] lg:right-[7%] lg:max-w-xs lg:text-lg"
+          initial={prefersReducedMotion ? false : fadeUp.hidden}
+          animate={prefersReducedMotion ? undefined : fadeUp.visible}
+          transition={{ delay: 3.2 }}
         >
-          <div className="panel-raised moodboard-frame relative mx-auto aspect-[655/578] w-full max-w-[34rem] overflow-hidden md:mx-0 md:max-w-none">
-            <Image
-              src={heroCollage}
-              alt="Abstract material moodboard collage"
-              fill
-              priority
-              quality={100}
-              unoptimized
-              className="object-cover"
-              sizes="(max-width: 768px) 90vw, 34rem"
-            />
-          </div>
-        </motion.div>
+          {homeCopy.hero.subheadline}
+        </motion.p>
       </div>
-
-      <motion.div
-        className="absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 md:block"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 0.8 }}
-        aria-hidden
-      >
-        <div className="flex flex-col items-center gap-2">
-          <span className="label-caps text-[0.55rem]">Scroll</span>
-          <motion.div
-            className="h-10 w-px bg-taupe/20"
-            animate={prefersReducedMotion ? undefined : { scaleY: [1, 0.5, 1] }}
-            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-            style={{ transformOrigin: "top" }}
-          />
-        </div>
-      </motion.div>
     </section>
   );
 }
