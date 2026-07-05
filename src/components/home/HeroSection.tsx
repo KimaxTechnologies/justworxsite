@@ -17,7 +17,7 @@ const heroReadableTextShadow =
   "[text-shadow:0_0_20px_color-mix(in_srgb,var(--canvas)_95%,transparent),0_1px_2px_color-mix(in_srgb,var(--canvas)_80%,transparent)]";
 
 const heroSubheadlineClass =
-  "max-w-[16rem] bg-gradient-to-l from-canvas/50 via-canvas/22 to-transparent px-3 py-2 font-sans text-sm font-bold leading-relaxed text-espresso [text-shadow:0_1px_1px_color-mix(in_srgb,var(--canvas)_98%,transparent),0_0_12px_color-mix(in_srgb,var(--canvas)_88%,transparent),0_0_3px_color-mix(in_srgb,var(--espresso)_12%,transparent)] sm:max-w-xs sm:px-3.5 sm:py-2 sm:text-base md:max-w-[17rem] md:text-right md:px-4 lg:max-w-xs lg:text-lg";
+  "max-w-[16rem] bg-gradient-to-l from-canvas/50 via-canvas/22 to-transparent px-3 py-1.5 font-sans text-sm font-bold leading-snug text-espresso [text-shadow:0_1px_1px_color-mix(in_srgb,var(--canvas)_98%,transparent),0_0_12px_color-mix(in_srgb,var(--canvas)_88%,transparent),0_0_3px_color-mix(in_srgb,var(--espresso)_12%,transparent)] sm:max-w-[17rem] sm:px-3.5 sm:py-1.5 sm:text-base md:max-w-[18.5rem] md:text-right md:px-4 lg:max-w-[19rem] lg:text-base lg:leading-snug";
 
 export function HeroSection() {
   const prefersReducedMotion = useReducedMotion();
