@@ -7,6 +7,7 @@ import { InstagramIcon } from "@/components/icons/InstagramIcon";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { socialPosts } from "@/lib/content/social-posts";
 import { staggerContainer, fadeUp } from "@/lib/motion/variants";
+import { cn } from "@/lib/utils";
 
 export function CuratedFeed() {
   const prefersReducedMotion = useReducedMotion();
@@ -37,7 +38,12 @@ export function CuratedFeed() {
               width={post.width}
               height={post.height}
               unoptimized
-              className="h-auto max-h-full w-auto max-w-full object-contain"
+              className={cn(
+                "h-auto w-auto object-contain",
+                index % 3 === 1
+                  ? "max-h-[84%] max-w-[84%]"
+                  : "max-h-full max-w-full",
+              )}
               sizes="(max-width: 768px) 42vw, 28vw"
             />
             <div className="absolute inset-0 z-20 flex items-center justify-center bg-espresso/0 transition-colors duration-300 group-hover:bg-espresso/8">
