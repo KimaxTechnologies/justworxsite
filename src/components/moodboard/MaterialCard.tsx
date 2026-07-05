@@ -4,8 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
-import { TactilePanel } from "@/components/ui/TactilePanel";
-import { getCategoryTexture } from "@/lib/design/lookbook-textures";
+import { getCategoryCardTexture } from "@/lib/design/lookbook-textures";
 import type { Category } from "@/lib/content/categories";
 import { cn } from "@/lib/utils";
 
@@ -19,7 +18,8 @@ export function MaterialCard({ category, index = 0, className }: MaterialCardPro
   const prefersReducedMotion = useReducedMotion();
   const isOffset = index % 2 === 1;
   const tilt = index % 3 === 0 ? 0.25 : index % 3 === 1 ? -0.2 : 0.1;
-  const textureSrc = getCategoryTexture(category.id);
+  const { src: textureSrc, position: texturePosition } =
+    getCategoryCardTexture(index);
   const overflowShift = index % 2 === 0 ? { x: 10, y: 14 } : { x: -8, y: 12 };
 
   return (
@@ -41,8 +41,9 @@ export function MaterialCard({ category, index = 0, className }: MaterialCardPro
           src={textureSrc}
           alt=""
           fill
-          className="object-cover"
-          sizes="(max-width: 768px) 50vw, 33vw"
+          unoptimized
+          className={cn("object-cover", texturePosition)}
+          sizes="(max-width: 768px) 50vw, 25vw"
         />
       </div>
 
@@ -51,11 +52,34 @@ export function MaterialCard({ category, index = 0, className }: MaterialCardPro
         className="panel-raised moodboard-frame relative block overflow-hidden bg-canvas transition-transform duration-500 group-hover:-translate-y-0.5"
         style={{ rotate: `${tilt}deg` }}
       >
-        <TactilePanel
-          surface={category.surface}
-          tornEdge
-          className="aspect-[4/5]"
-        />
+        <div className="relative aspect-[4/5] overflow-hidden">
+          <Image
+            src={textureSrc}
+            alt=""
+            fill
+            unoptimized
+            className={cn("object-cover", texturePosition)}
+            sizes="(max-width: 768px) 50vw, 25vw"
+          />
+          <div
+            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-canvas/25 via-transparent to-canvas/5"
+            aria-hidden
+          />
+          <div
+            className="absolute -right-px top-6 z-10 h-14 w-1.5 bg-canvas/90"
+            style={{ clipPath: "polygon(0 5%, 100% 0, 100% 95%, 0 100%)" }}
+            aria-hidden
+          />
+          <div
+            className="absolute bottom-6 left-4 z-10 h-2 w-10 bg-canvas/80"
+            style={{ clipPath: "polygon(0 0, 100% 25%, 100% 100%, 0 75%)" }}
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute inset-2 border border-stone/12"
+            aria-hidden
+          />
+        </div>
 
         <div className="border-t border-stone/15 bg-canvas px-5 py-5">
           <span className="label-caps mb-2 block text-[0.6rem]">

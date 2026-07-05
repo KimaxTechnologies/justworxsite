@@ -48,6 +48,28 @@ export const lookbookTextures: Record<
   },
 };
 
+export const categoryCardTextures = {
+  gold: "/lookbook/textures/card-floral-gold.png",
+  cream: "/lookbook/textures/card-floral-cream.png",
+} as const;
+
+export function getCategoryCardTexture(index: number): {
+  src: string;
+  position: string;
+} {
+  if (index % 2 === 0) {
+    return {
+      src: categoryCardTextures.gold,
+      position: "object-[58%_12%]",
+    };
+  }
+
+  return {
+    src: categoryCardTextures.cream,
+    position: "object-center",
+  };
+}
+
 const categoryTextureMap: Record<CategoryId, LookbookTextureId> = {
   gifts: "stone-panel",
   signage: "parchment",
