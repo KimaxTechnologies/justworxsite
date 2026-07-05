@@ -8,9 +8,13 @@ import { TypewriterText } from "@/components/ui/TypewriterText";
 import { getWhatsAppUrl } from "@/lib/config/site";
 import { homeCopy } from "@/lib/content/copy";
 import { fadeUp } from "@/lib/motion/variants";
+import { cn } from "@/lib/utils";
 
 const heroFull = "/moodboard/hero-full.png";
 const heroTaupe = "#dad0c9";
+
+const heroReadableTextShadow =
+  "[text-shadow:0_0_20px_color-mix(in_srgb,var(--canvas)_95%,transparent),0_1px_2px_color-mix(in_srgb,var(--canvas)_80%,transparent)]";
 
 export function HeroSection() {
   const prefersReducedMotion = useReducedMotion();
@@ -79,7 +83,10 @@ export function HeroSection() {
 
       <div className="relative z-10 flex min-h-[100svh] flex-col px-6 pb-28 pt-28 md:px-10 md:pb-16 md:pt-32">
         <motion.p
-          className="mb-5 max-w-xs font-sans text-[0.7rem] font-bold uppercase tracking-[0.22em] text-espresso [text-shadow:0_0_20px_color-mix(in_srgb,var(--canvas)_95%,transparent),0_1px_2px_color-mix(in_srgb,var(--canvas)_80%,transparent)] md:absolute md:left-[6%] md:top-[20%] md:mb-0 lg:left-[7%]"
+          className={cn(
+            "mb-5 max-w-xs font-sans text-[0.7rem] font-bold uppercase tracking-[0.22em] text-espresso md:absolute md:left-[6%] md:top-[20%] md:mb-0 lg:left-[7%]",
+            heroReadableTextShadow,
+          )}
           initial={prefersReducedMotion ? false : fadeUp.hidden}
           animate={prefersReducedMotion ? undefined : fadeUp.visible}
           transition={{ delay: 0.1 }}
@@ -119,7 +126,10 @@ export function HeroSection() {
           </motion.div>
 
           <motion.p
-            className="max-w-[16rem] font-sans text-sm font-medium leading-relaxed text-espresso [text-shadow:0_0_22px_color-mix(in_srgb,var(--canvas)_94%,transparent),0_1px_3px_color-mix(in_srgb,var(--canvas)_75%,transparent)] sm:max-w-xs sm:text-base md:max-w-[17rem] md:text-right lg:max-w-xs lg:text-lg"
+            className={cn(
+              "max-w-[16rem] font-sans text-sm font-bold leading-relaxed text-espresso sm:max-w-xs sm:text-base md:max-w-[17rem] md:text-right lg:max-w-xs lg:text-lg",
+              heroReadableTextShadow,
+            )}
             initial={prefersReducedMotion ? false : fadeUp.hidden}
             animate={prefersReducedMotion ? undefined : fadeUp.visible}
             transition={{ delay: 4.6 }}
