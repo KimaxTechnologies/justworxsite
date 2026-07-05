@@ -16,11 +16,11 @@ const heroTaupe = "#dad0c9";
 const heroReadableTextShadow =
   "[text-shadow:0_0_20px_color-mix(in_srgb,var(--canvas)_95%,transparent),0_1px_2px_color-mix(in_srgb,var(--canvas)_80%,transparent)]";
 
-const heroSubheadlineTextShadow =
-  "[text-shadow:0_0_32px_color-mix(in_srgb,var(--wood)_70%,transparent),0_0_14px_color-mix(in_srgb,var(--wood)_50%,transparent),0_1px_3px_color-mix(in_srgb,var(--espresso)_75%,transparent)]";
+const heroSubheadlineLeadShadow =
+  "[text-shadow:0_0_24px_color-mix(in_srgb,var(--wood)_55%,transparent),0_0_10px_color-mix(in_srgb,var(--wood)_40%,transparent),0_1px_2px_color-mix(in_srgb,var(--espresso)_60%,transparent)]";
 
 const heroSubheadlineClass =
-  "max-w-[17rem] font-heading text-base font-normal leading-[1.2] tracking-tight text-espresso sm:max-w-[19rem] sm:text-lg md:max-w-[21rem] md:self-end md:text-right md:text-xl lg:max-w-[23rem] lg:text-[1.35rem] xl:max-w-[25rem] xl:text-2xl";
+  "max-w-[16rem] font-sans text-sm font-light leading-snug text-espresso sm:max-w-[17rem] sm:text-base md:max-w-[18.5rem] md:self-end md:text-right lg:max-w-[19rem] lg:text-base";
 
 export function HeroSection() {
   const prefersReducedMotion = useReducedMotion();
@@ -132,12 +132,15 @@ export function HeroSection() {
           </motion.div>
 
           <motion.p
-            className={cn(heroSubheadlineClass, heroSubheadlineTextShadow)}
+            className={heroSubheadlineClass}
             initial={prefersReducedMotion ? false : fadeUp.hidden}
             animate={prefersReducedMotion ? undefined : fadeUp.visible}
             transition={{ delay: 4.6 }}
           >
-            {homeCopy.hero.subheadline}
+            <span className={cn("block", heroSubheadlineLeadShadow)}>
+              {homeCopy.hero.subheadlineLead}
+            </span>
+            <span className="mt-1 block">{homeCopy.hero.subheadlineRest}</span>
           </motion.p>
         </div>
       </div>

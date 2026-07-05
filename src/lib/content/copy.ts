@@ -4,6 +4,9 @@ export const homeCopy = {
     headline: "Objects made for the moments that matter",
     subheadline:
       "Custom-crafted in hardwood, stone, metal, and perspex — each piece personally tailored, never repeated.",
+    subheadlineLead: "Custom-crafted in hardwood, stone",
+    subheadlineRest:
+      "metal, and perspex — each piece personally tailored, never repeated.",
     cta: "Begin on WhatsApp",
     ctaSecondary: "View our work",
   },
