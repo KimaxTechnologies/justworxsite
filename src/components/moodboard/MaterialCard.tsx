@@ -57,13 +57,30 @@ export function MaterialCard({ category, index = 0, className }: MaterialCardPro
         className="panel-raised moodboard-frame relative block overflow-hidden bg-canvas transition-transform duration-500 group-hover:-translate-y-0.5"
         style={{ rotate: `${tilt}deg` }}
       >
-        <div className="relative aspect-[4/5] overflow-hidden bg-canvas">
+        <div
+          className={cn(
+            "relative aspect-[4/5] overflow-hidden",
+            frontFit !== "contain" && "bg-canvas",
+          )}
+        >
+          {frontFit === "contain" && (
+            <Image
+              src={textureSrc}
+              alt=""
+              fill
+              unoptimized
+              className={cn("object-cover", texturePosition)}
+              sizes="(max-width: 768px) 50vw, 25vw"
+              aria-hidden
+            />
+          )}
           <Image
             src={frontSrc}
             alt={category.image ? category.title : ""}
             fill
             unoptimized
             className={cn(
+              "z-[1]",
               frontFit === "contain" ? "object-contain" : "object-cover",
               frontPosition,
             )}
