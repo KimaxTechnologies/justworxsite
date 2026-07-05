@@ -7,7 +7,7 @@ import { ChannelPanel } from "@/components/ui/ChannelPanel";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { getWhatsAppUrl, siteConfig } from "@/lib/config/site";
 import { inquireCopy } from "@/lib/content/copy";
-import { getCategoryCardTexture } from "@/lib/design/lookbook-textures";
+import { categoryCardTextures, floralCardContactScrimClass, floralCardContactWashClass } from "@/lib/design/lookbook-textures";
 import { cn } from "@/lib/utils";
 
 type InquiryTriadProps = {
@@ -16,8 +16,10 @@ type InquiryTriadProps = {
 };
 
 const contactCardTexture = {
-  ...getCategoryCardTexture(0),
-  scale: 0.82,
+  src: categoryCardTextures.gold,
+  position: "object-center",
+  scrimClass: floralCardContactScrimClass,
+  washClass: floralCardContactWashClass,
 };
 
 const channels = [

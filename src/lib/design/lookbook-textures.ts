@@ -81,8 +81,14 @@ export function isFloralCategoryCard(index: number): boolean {
 export const floralCardScrimClass =
   "bg-gradient-to-r from-canvas/48 via-canvas/22 to-transparent";
 
+export const floralCardContactScrimClass =
+  "bg-gradient-to-r from-canvas/30 via-canvas/12 to-canvas/6";
+
 export const floralCardLightWashClass =
   "bg-gradient-to-t from-canvas/34 via-canvas/10 to-canvas/6";
+
+export const floralCardContactWashClass =
+  "bg-gradient-to-t from-canvas/20 via-transparent to-canvas/4";
 
 export const floralCardHoverClass =
   "shadow-[2px_8px_24px_color-mix(in_srgb,var(--espresso)_6%,transparent)] transition-[transform,box-shadow] duration-500 hover:-translate-y-1 hover:shadow-[4px_14px_34px_color-mix(in_srgb,var(--espresso)_11%,transparent)]";

@@ -19,6 +19,8 @@ type ChannelPanelProps = {
     src: string;
     position: string;
     scale?: number;
+    scrimClass?: string;
+    washClass?: string;
   };
   as?: "div" | "a";
   href?: string;
@@ -61,14 +63,14 @@ export function ChannelPanel({
           <div
             className={cn(
               "pointer-events-none absolute inset-0",
-              floralCardScrimClass,
+              texture.scrimClass ?? floralCardScrimClass,
             )}
             aria-hidden
           />
           <div
             className={cn(
               "pointer-events-none absolute inset-0",
-              floralCardLightWashClass,
+              texture.washClass ?? floralCardLightWashClass,
             )}
             aria-hidden
           />
