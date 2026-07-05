@@ -25,7 +25,7 @@ export function HeroSection() {
         aria-hidden
       >
         <motion.div
-          className="absolute inset-0 will-change-transform"
+          className="absolute inset-0 flex items-center justify-center overflow-hidden will-change-transform"
           animate={
             prefersReducedMotion
               ? undefined
@@ -40,16 +40,18 @@ export function HeroSection() {
             ease: "easeInOut",
           }}
         >
-          <Image
-            src={heroFull}
-            alt=""
-            fill
-            priority
-            quality={100}
-            unoptimized
-            className="object-contain object-center"
-            sizes="100vw"
-          />
+          <div className="relative h-full w-full min-h-[56.25vw]">
+            <Image
+              src={heroFull}
+              alt=""
+              fill
+              priority
+              quality={100}
+              unoptimized
+              className="object-cover object-center"
+              sizes="100vw"
+            />
+          </div>
         </motion.div>
 
         <div
@@ -77,7 +79,7 @@ export function HeroSection() {
 
       <div className="relative z-10 flex min-h-[100svh] flex-col px-6 pb-28 pt-28 md:px-10 md:pb-16 md:pt-32">
         <motion.p
-          className="label-caps mb-5 max-w-xs text-espresso/75 md:absolute md:left-[6%] md:top-[20%] md:mb-0 lg:left-[7%]"
+          className="label-caps mb-5 max-w-xs text-espresso [text-shadow:0_1px_14px_color-mix(in_srgb,var(--canvas)_88%,transparent)] md:absolute md:left-[6%] md:top-[20%] md:mb-0 lg:left-[7%]"
           initial={prefersReducedMotion ? false : fadeUp.hidden}
           animate={prefersReducedMotion ? undefined : fadeUp.visible}
           transition={{ delay: 0.1 }}
@@ -117,7 +119,7 @@ export function HeroSection() {
           </motion.div>
 
           <motion.p
-            className="max-w-[16rem] font-sans text-sm font-medium leading-relaxed text-espresso/85 sm:max-w-xs sm:text-base md:max-w-[15rem] md:text-right lg:max-w-xs lg:text-lg"
+            className="max-w-[16rem] rounded-sm bg-canvas/55 px-3 py-2.5 font-sans text-sm font-semibold leading-relaxed text-espresso shadow-[0_2px_16px_color-mix(in_srgb,var(--canvas)_40%,transparent)] backdrop-blur-[2px] sm:max-w-xs sm:text-base md:max-w-[17rem] md:text-right lg:max-w-xs lg:text-lg"
             initial={prefersReducedMotion ? false : fadeUp.hidden}
             animate={prefersReducedMotion ? undefined : fadeUp.visible}
             transition={{ delay: 4.6 }}
