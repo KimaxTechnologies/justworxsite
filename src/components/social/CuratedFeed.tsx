@@ -41,7 +41,7 @@ export function CuratedFeed() {
               className={cn(
                 "h-auto w-auto object-contain",
                 index % 3 === 1
-                  ? "max-h-[84%] max-w-[84%]"
+                  ? "max-h-[92%] max-w-[92%]"
                   : "max-h-full max-w-full",
               )}
               sizes="(max-width: 768px) 42vw, 28vw"
