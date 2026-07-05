@@ -19,11 +19,11 @@ export const socialPosts: SocialPost[] = [
   },
   {
     id: "ig-2",
-    alt: "Dante layered wooden name sign",
+    alt: "Tree bookshelf reading nook with wooden sculpture",
     permalink:
-      "https://www.instagram.com/p/CgZgGZHqJPg/?igsh=MWlsZjcybTd5NQ==",
+      "https://www.instagram.com/p/DZulayijIuL/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ==",
     image: "/social/ig-2.jpg",
-    width: 819,
+    width: 768,
     height: 1024,
   },
   {
