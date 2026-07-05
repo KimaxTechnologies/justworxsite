@@ -27,23 +27,19 @@ export function TypewriterText({
   const isInView = useInView(ref, { once: true, margin: "-8%" });
   const shouldStart = triggerOnView ? isInView : true;
   const [displayed, setDisplayed] = useState(prefersReducedMotion ? text : "");
-  const [done, setDone] = useState(Boolean(prefersReducedMotion));
 
   useEffect(() => {
     if (prefersReducedMotion) {
       setDisplayed(text);
-      setDone(true);
       return;
     }
 
     if (!shouldStart) {
       setDisplayed("");
-      setDone(false);
       return;
     }
 
     setDisplayed("");
-    setDone(false);
 
     let index = 0;
     let intervalId: ReturnType<typeof setInterval> | undefined;
@@ -54,7 +50,6 @@ export function TypewriterText({
         setDisplayed(text.slice(0, index));
         if (index >= text.length) {
           if (intervalId) clearInterval(intervalId);
-          setDone(true);
         }
       }, speedMs);
     }, startDelayMs);
@@ -68,14 +63,6 @@ export function TypewriterText({
   return (
     <Tag ref={ref as never} className={cn(className)}>
       {displayed}
-      {!done && displayed.length > 0 && (
-        <span
-          className="ml-0.5 inline-block w-px animate-pulse bg-espresso/70"
-          aria-hidden
-        >
-          &nbsp;
-        </span>
-      )}
     </Tag>
   );
 }

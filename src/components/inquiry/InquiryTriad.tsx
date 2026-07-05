@@ -7,6 +7,7 @@ import { ChannelPanel } from "@/components/ui/ChannelPanel";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { getWhatsAppUrl, siteConfig } from "@/lib/config/site";
 import { inquireCopy } from "@/lib/content/copy";
+import { getCategoryCardTexture } from "@/lib/design/lookbook-textures";
 import { cn } from "@/lib/utils";
 
 type InquiryTriadProps = {
@@ -14,11 +15,12 @@ type InquiryTriadProps = {
   activeChannel?: "whatsapp" | "instagram";
 };
 
+const contactCardTexture = getCategoryCardTexture(0);
+
 const channels = [
   {
     id: "whatsapp" as const,
     icon: MessageCircle,
-    surface: "sand" as const,
     title: inquireCopy.channels.whatsapp.title,
     description: inquireCopy.channels.whatsapp.description,
     href: getWhatsAppUrl(),
@@ -28,7 +30,6 @@ const channels = [
   {
     id: "instagram" as const,
     icon: InstagramIcon,
-    surface: "ceramic" as const,
     title: inquireCopy.channels.instagram.title,
     description: inquireCopy.channels.instagram.description,
     href: siteConfig.social.instagram,
@@ -56,7 +57,7 @@ export function InquiryTriad({ className, activeChannel }: InquiryTriadProps) {
               as="a"
               href={channel.href}
               external={channel.external}
-              surface={channel.surface}
+              texture={contactCardTexture}
               className={cn(
                 "flex min-h-[220px] flex-col justify-between p-8 md:min-h-[260px] md:p-10",
                 isActive && "border-stone/30",
