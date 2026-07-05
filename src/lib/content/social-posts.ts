@@ -3,49 +3,63 @@ export type SocialPost = {
   alt: string;
   permalink: string;
   image: string;
+  width: number;
+  height: number;
 };
 
 export const socialPosts: SocialPost[] = [
   {
     id: "ig-1",
-    alt: "Hardwood engraving detail",
+    alt: "Zienke nursery sign and changing station",
     permalink:
       "https://www.instagram.com/p/CgATFQQKZrp/?igsh=MXQxY2VpcTMxM2cxbg==",
     image: "/social/ig-1.jpg",
+    width: 962,
+    height: 1024,
   },
   {
     id: "ig-2",
-    alt: "Layered stone and wood composition",
+    alt: "Dante layered wooden name sign",
     permalink:
       "https://www.instagram.com/p/CgZgGZHqJPg/?igsh=MWlsZjcybTd5NQ==",
     image: "/social/ig-2.jpg",
+    width: 819,
+    height: 1024,
   },
   {
     id: "ig-3",
-    alt: "Metal inlay on hardwood",
+    alt: "Geometric hardwood cabinet in a living space",
     permalink:
       "https://www.instagram.com/p/DLwWaA2o1NV/?img_index=1&igsh=MXc5OHNuZ3pyeHNleQ==",
     image: "/social/ig-3.jpg",
+    width: 771,
+    height: 1024,
   },
   {
     id: "ig-4",
-    alt: "Perspex layered wall piece",
+    alt: "Backlit mountain panels in a nursery",
     permalink:
       "https://www.instagram.com/p/DLwPeD6orJ4/?igsh=YXlycTdpeWk4M2Fr",
     image: "/social/ig-4.jpg",
+    width: 771,
+    height: 1024,
   },
   {
     id: "ig-5",
-    alt: "Warm material study",
+    alt: "Wedding welcome and seating chart signage",
     permalink:
       "https://www.instagram.com/p/CkIU4r6q7TR/?igsh=MWozMGJhbjJrbDVzbQ==",
     image: "/social/ig-5.jpg",
+    width: 819,
+    height: 1024,
   },
   {
     id: "ig-6",
-    alt: "Handcrafted studio work",
+    alt: "Layered hardwood fox wall art",
     permalink:
       "https://www.instagram.com/p/CamG04IKF5B/?img_index=1&igsh=MWF1dTRpN3Z3a2N3bA==",
     image: "/social/ig-6.jpg",
+    width: 1024,
+    height: 1024,
   },
 ];

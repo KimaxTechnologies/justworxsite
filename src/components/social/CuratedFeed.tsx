@@ -27,17 +27,17 @@ export function CuratedFeed() {
             target="_blank"
             rel="noopener noreferrer"
             variants={prefersReducedMotion ? undefined : fadeUp}
-            className="panel-raised moodboard-frame group relative flex aspect-[4/5] items-center justify-center overflow-hidden bg-linen p-5 transition-transform duration-500 hover:-translate-y-0.5 md:p-6"
+            className="panel-raised moodboard-frame group relative flex aspect-[4/5] items-center justify-center overflow-hidden bg-linen p-4 transition-transform duration-500 hover:-translate-y-0.5 md:p-5"
             style={index % 3 === 1 ? { marginTop: "0.5rem" } : undefined}
             aria-label={post.alt}
           >
             <Image
               src={post.image}
               alt={post.alt}
-              width={1080}
-              height={1080}
+              width={post.width}
+              height={post.height}
               unoptimized
-              className="max-h-full max-w-full object-contain"
+              className="h-auto max-h-full w-auto max-w-full object-contain"
               sizes="(max-width: 768px) 42vw, 28vw"
             />
             <div className="absolute inset-0 z-20 flex items-center justify-center bg-espresso/0 transition-colors duration-300 group-hover:bg-espresso/8">
