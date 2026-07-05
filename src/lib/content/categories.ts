@@ -16,6 +16,7 @@ export type Category = {
   title: string;
   description: string;
   surface: SurfaceId;
+  image?: string;
 };
 
 export const categories: Category[] = [
@@ -32,6 +33,7 @@ export const categories: Category[] = [
     description:
       "Refined markers of presence — your brand, your space, your name.",
     surface: "paper",
+    image: "/categories/signage.jpg",
   },
   {
     id: "wall-art",
@@ -46,6 +48,7 @@ export const categories: Category[] = [
     description:
       "Custom fittings that cast warmth — sculptural, soft, unforgettable.",
     surface: "ceramic",
+    image: "/categories/light-fittings.jpg",
   },
   {
     id: "furniture",
@@ -60,6 +63,7 @@ export const categories: Category[] = [
     description:
       "Natural stone etched with names, dates, and sacred geometry.",
     surface: "stone",
+    image: "/categories/stone.jpg",
   },
   {
     id: "spiritual-decor",
@@ -74,6 +78,7 @@ export const categories: Category[] = [
     description:
       "Weddings, launches, executive gifting — moments that deserve permanence.",
     surface: "ceramic",
+    image: "/categories/corporate.jpg",
   },
 ];
 

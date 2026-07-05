@@ -20,6 +20,10 @@ export function MaterialCard({ category, index = 0, className }: MaterialCardPro
   const tilt = index % 3 === 0 ? 0.25 : index % 3 === 1 ? -0.2 : 0.1;
   const { src: textureSrc, position: texturePosition } =
     getCategoryCardTexture(index);
+  const frontSrc = category.image ?? textureSrc;
+  const frontPosition = category.image
+    ? "object-cover object-center"
+    : texturePosition;
   const overflowShift = index % 2 === 0 ? { x: 10, y: 14 } : { x: -8, y: 12 };
 
   return (
@@ -54,11 +58,11 @@ export function MaterialCard({ category, index = 0, className }: MaterialCardPro
       >
         <div className="relative aspect-[4/5] overflow-hidden">
           <Image
-            src={textureSrc}
-            alt=""
+            src={frontSrc}
+            alt={category.image ? category.title : ""}
             fill
             unoptimized
-            className={cn("object-cover", texturePosition)}
+            className={cn("object-cover", frontPosition)}
             sizes="(max-width: 768px) 50vw, 25vw"
           />
           <div
