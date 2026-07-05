@@ -7,7 +7,7 @@ import Link from "next/link";
 import { TypewriterText } from "@/components/ui/TypewriterText";
 import { getWhatsAppUrl } from "@/lib/config/site";
 import { homeCopy } from "@/lib/content/copy";
-import { fadeUp } from "@/lib/motion/variants";
+import { easeLuxury, fadeUp } from "@/lib/motion/variants";
 import { cn } from "@/lib/utils";
 
 const heroFull = "/moodboard/hero-full.png";
@@ -17,7 +17,12 @@ const heroReadableTextShadow =
   "[text-shadow:0_0_20px_color-mix(in_srgb,var(--canvas)_95%,transparent),0_1px_2px_color-mix(in_srgb,var(--canvas)_80%,transparent)]";
 
 const heroSubheadlinePanelClass =
-  "max-w-[16rem] bg-canvas/30 px-4 py-3 text-right font-sans text-sm font-light leading-snug text-espresso sm:max-w-[17rem] sm:px-4 sm:py-3.5 sm:text-base md:max-w-[19rem] md:self-end md:px-5 md:py-4 lg:max-w-[21rem] lg:text-base";
+  "relative bg-canvas/30 py-3 pl-4 pr-6 text-right font-sans text-sm font-light leading-snug text-espresso sm:py-3.5 sm:text-base md:ml-auto md:min-w-[min(100%,22rem)] md:max-w-[38vw] md:py-4 md:pl-10 md:pr-[calc(2.5rem+6%+1.25rem)] md:mr-[calc(-2.5rem-6%)] lg:min-w-[min(100%,24rem)] lg:max-w-[34vw] lg:pr-[calc(2.5rem+7%+1.25rem)] lg:mr-[calc(-2.5rem-7%)] lg:text-base";
+
+const heroSubheadlineSlide = {
+  hidden: { opacity: 0, x: "110%" },
+  visible: { opacity: 1, x: 0 },
+};
 
 export function HeroSection() {
   const prefersReducedMotion = useReducedMotion();
@@ -129,10 +134,15 @@ export function HeroSection() {
           </motion.div>
 
           <motion.p
-            className={heroSubheadlinePanelClass}
-            initial={prefersReducedMotion ? false : fadeUp.hidden}
-            animate={prefersReducedMotion ? undefined : fadeUp.visible}
-            transition={{ delay: 4.6 }}
+            className={cn(
+              heroSubheadlinePanelClass,
+              "mr-[-1.5rem] w-[calc(100%+1.5rem)] md:w-auto",
+            )}
+            initial={prefersReducedMotion ? false : heroSubheadlineSlide.hidden}
+            animate={
+              prefersReducedMotion ? undefined : heroSubheadlineSlide.visible
+            }
+            transition={{ delay: 4.6, duration: 0.75, ease: easeLuxury }}
           >
             {homeCopy.hero.subheadlineLines.map((line) => (
               <span key={line} className="block">
