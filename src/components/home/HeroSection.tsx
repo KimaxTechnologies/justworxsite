@@ -81,7 +81,7 @@ export function HeroSection() {
         />
       </div>
 
-      <div className="relative z-10 flex min-h-[100svh] flex-col px-6 pb-28 pt-28 md:px-10 md:pb-16 md:pt-32">
+      <div className="relative z-10 flex min-h-[100svh] flex-col px-6 pb-12 pt-28 md:px-10 md:pb-8 md:pt-32">
         <motion.p
           className={cn(
             "mb-5 max-w-xs font-sans text-[0.7rem] font-bold uppercase tracking-[0.22em] text-espresso md:absolute md:left-[6%] md:top-[20%] md:mb-0 lg:left-[7%]",
@@ -102,7 +102,7 @@ export function HeroSection() {
           speedMs={78}
         />
 
-        <div className="mt-auto flex flex-col gap-10 md:absolute md:inset-x-[6%] md:bottom-[8%] md:flex-row md:items-center md:justify-between md:gap-8 lg:inset-x-[7%]">
+        <div className="mt-auto flex flex-col gap-8 md:absolute md:inset-x-[6%] md:bottom-[2.5%] md:flex-row md:items-end md:justify-between md:gap-8 lg:inset-x-[7%]">
           <motion.div
             className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4"
             initial={prefersReducedMotion ? false : fadeUp.hidden}
