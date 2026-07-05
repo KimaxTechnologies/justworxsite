@@ -1,3 +1,6 @@
+"use client";
+
+import { TypewriterText } from "@/components/ui/TypewriterText";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { cn } from "@/lib/utils";
 
@@ -7,7 +10,11 @@ type SectionHeadingProps = {
   description?: string;
   className?: string;
   align?: "left" | "center";
+  animateHeadline?: boolean;
 };
+
+const headlineClassName =
+  "font-heading text-3xl leading-tight text-balance md:text-4xl lg:text-5xl";
 
 export function SectionHeading({
   eyebrow,
@@ -15,6 +22,7 @@ export function SectionHeading({
   description,
   className,
   align = "left",
+  animateHeadline = false,
 }: SectionHeadingProps) {
   return (
     <ScrollReveal
@@ -25,9 +33,18 @@ export function SectionHeading({
       )}
     >
       {eyebrow && <p className="label-caps mb-4">{eyebrow}</p>}
-      <h2 className="font-heading text-3xl leading-tight text-balance md:text-4xl lg:text-5xl">
-        {headline}
-      </h2>
+      {animateHeadline ? (
+        <TypewriterText
+          text={headline}
+          as="h2"
+          className={headlineClassName}
+          triggerOnView
+          speedMs={72}
+          startDelayMs={200}
+        />
+      ) : (
+        <h2 className={headlineClassName}>{headline}</h2>
+      )}
       {description && (
         <p
           className={cn(

@@ -89,7 +89,8 @@ export function HeroSection() {
           text={homeCopy.hero.headline}
           as="h1"
           className="font-heading max-w-[11rem] text-[2rem] leading-[1.1] text-espresso sm:max-w-sm sm:text-[2.35rem] md:absolute md:left-[6%] md:top-[26%] md:max-w-md md:text-5xl lg:left-[7%] lg:max-w-lg lg:text-6xl xl:max-w-xl xl:text-[4.25rem]"
-          startDelayMs={500}
+          startDelayMs={700}
+          speedMs={78}
         />
 
         <div className="mt-auto flex flex-col gap-10 md:absolute md:inset-x-[6%] md:bottom-[8%] md:flex-row md:items-center md:justify-between md:gap-8 lg:inset-x-[7%]">
@@ -97,7 +98,7 @@ export function HeroSection() {
             className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4"
             initial={prefersReducedMotion ? false : fadeUp.hidden}
             animate={prefersReducedMotion ? undefined : fadeUp.visible}
-            transition={{ delay: 2.8 }}
+            transition={{ delay: 4.2 }}
           >
             <a
               href={getWhatsAppUrl()}
@@ -119,7 +120,7 @@ export function HeroSection() {
             className="max-w-[16rem] font-sans text-sm font-light leading-relaxed text-espresso/85 sm:max-w-xs sm:text-base md:max-w-[15rem] md:text-right lg:max-w-xs lg:text-lg"
             initial={prefersReducedMotion ? false : fadeUp.hidden}
             animate={prefersReducedMotion ? undefined : fadeUp.visible}
-            transition={{ delay: 3.2 }}
+            transition={{ delay: 4.6 }}
           >
             {homeCopy.hero.subheadline}
           </motion.p>

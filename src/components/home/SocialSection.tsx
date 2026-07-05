@@ -11,6 +11,7 @@ export function SocialSection() {
         eyebrow={homeCopy.social.eyebrow}
         headline={homeCopy.social.headline}
         description={homeCopy.social.description}
+        animateHeadline
       />
 
       <CuratedFeed />
