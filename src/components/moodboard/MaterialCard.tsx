@@ -21,8 +21,9 @@ export function MaterialCard({ category, index = 0, className }: MaterialCardPro
   const { src: textureSrc, position: texturePosition } =
     getCategoryCardTexture(index);
   const frontSrc = category.image ?? textureSrc;
+  const frontFit = category.imageFit ?? "cover";
   const frontPosition = category.image
-    ? "object-cover object-center"
+    ? "object-center"
     : texturePosition;
   const overflowShift = index % 2 === 0 ? { x: 10, y: 14 } : { x: -8, y: 12 };
 
@@ -56,13 +57,16 @@ export function MaterialCard({ category, index = 0, className }: MaterialCardPro
         className="panel-raised moodboard-frame relative block overflow-hidden bg-canvas transition-transform duration-500 group-hover:-translate-y-0.5"
         style={{ rotate: `${tilt}deg` }}
       >
-        <div className="relative aspect-[4/5] overflow-hidden">
+        <div className="relative aspect-[4/5] overflow-hidden bg-canvas">
           <Image
             src={frontSrc}
             alt={category.image ? category.title : ""}
             fill
             unoptimized
-            className={cn("object-cover", frontPosition)}
+            className={cn(
+              frontFit === "contain" ? "object-contain" : "object-cover",
+              frontPosition,
+            )}
             sizes="(max-width: 768px) 50vw, 25vw"
           />
           <div

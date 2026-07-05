@@ -17,6 +17,7 @@ export type Category = {
   description: string;
   surface: SurfaceId;
   image?: string;
+  imageFit?: "cover" | "contain";
 };
 
 export const categories: Category[] = [
@@ -34,6 +35,7 @@ export const categories: Category[] = [
       "Refined markers of presence — your brand, your space, your name.",
     surface: "paper",
     image: "/categories/signage.jpg",
+    imageFit: "contain",
   },
   {
     id: "wall-art",
