@@ -11,7 +11,6 @@ export function CategoriesSection() {
         eyebrow={homeCopy.categories.eyebrow}
         headline={homeCopy.categories.headline}
         description={homeCopy.categories.description}
-        animateHeadline
       />
 
       <div className="mt-20 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8 xl:gap-10">

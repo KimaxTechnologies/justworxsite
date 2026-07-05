@@ -10,7 +10,6 @@ export function ClosingCTASection() {
         headline={homeCopy.closingCta.headline}
         description={homeCopy.closingCta.description}
         align="center"
-        animateHeadline
       />
       <InquiryTriad className="max-w-none md:gap-6 lg:gap-8" />
     </SectionShell>

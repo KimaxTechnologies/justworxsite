@@ -22,7 +22,7 @@ export function SectionHeading({
   description,
   className,
   align = "left",
-  animateHeadline = false,
+  animateHeadline = true,
 }: SectionHeadingProps) {
   return (
     <ScrollReveal
