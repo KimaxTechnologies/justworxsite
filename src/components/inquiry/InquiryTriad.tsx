@@ -15,7 +15,10 @@ type InquiryTriadProps = {
   activeChannel?: "whatsapp" | "instagram";
 };
 
-const contactCardTexture = getCategoryCardTexture(0);
+const contactCardTexture = {
+  ...getCategoryCardTexture(0),
+  scale: 0.82,
+};
 
 const channels = [
   {
@@ -65,14 +68,14 @@ export function InquiryTriad({ className, activeChannel }: InquiryTriadProps) {
             >
               <div>
                 <Icon className="mb-5 size-5 text-wood" />
-                <h3 className="font-heading text-2xl md:text-3xl">
+                <h3 className="font-heading text-2xl text-espresso md:text-3xl">
                   {channel.title}
                 </h3>
-                <p className="mt-3 font-sans text-sm font-light leading-relaxed text-taupe md:text-base">
+                <p className="mt-3 font-sans text-sm font-normal leading-relaxed text-espresso/85 md:text-base">
                   {channel.description}
                 </p>
               </div>
-              <span className="mt-8 inline-flex items-center gap-2 font-sans text-xs font-medium uppercase tracking-[0.18em] text-wood transition-all group-hover:gap-3">
+              <span className="mt-8 inline-flex items-center gap-2 font-sans text-xs font-medium uppercase tracking-[0.18em] text-espresso transition-all group-hover:gap-3 group-hover:text-wood">
                 {channel.cta}
                 <span aria-hidden>→</span>
               </span>
