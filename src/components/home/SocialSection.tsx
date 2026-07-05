@@ -6,7 +6,7 @@ import { siteConfig } from "@/lib/config/site";
 
 export function SocialSection() {
   return (
-    <SectionShell className="py-28 md:py-36" innerClassName="editorial-container">
+    <SectionShell className="py-28 md:py-36" innerClassName="editorial-container-wide">
       <SectionHeading
         eyebrow={homeCopy.social.eyebrow}
         headline={homeCopy.social.headline}

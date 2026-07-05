@@ -7,7 +7,7 @@ export function SiteFooter() {
 
   return (
     <footer className="border-t border-stone/20 bg-linen/50">
-      <div className="editorial-container py-16 md:py-20">
+      <div className="editorial-container-wide py-16 md:py-20">
         <div className="grid gap-12 md:grid-cols-3 md:gap-8">
           <div>
             <Link
