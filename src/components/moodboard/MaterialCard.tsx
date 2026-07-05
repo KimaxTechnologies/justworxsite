@@ -21,6 +21,39 @@ type MaterialCardProps = {
   className?: string;
 };
 
+const categoryPhotoScale = 1.28;
+
+function CategoryPhotoImage({
+  src,
+  alt,
+  sizes,
+  position,
+  scale = categoryPhotoScale,
+  focus = "center center",
+}: {
+  src: string;
+  alt: string;
+  sizes: string;
+  position: string;
+  scale?: number;
+  focus?: string;
+}) {
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      fill
+      unoptimized
+      className={cn("z-[1] object-cover", position)}
+      style={{
+        transform: `scale(${scale})`,
+        transformOrigin: focus,
+      }}
+      sizes={sizes}
+    />
+  );
+}
+
 function ScaledTextureImage({
   src,
   position,
@@ -142,17 +175,13 @@ export function MaterialCard({ category, index = 0, className }: MaterialCardPro
                   sizes={imageSizes}
                 />
               )}
-              <Image
+              <CategoryPhotoImage
                 src={frontSrc}
-                alt={category.image ? category.title : ""}
-                fill
-                unoptimized
-                className={cn(
-                  "z-[1]",
-                  frontFit === "contain" ? "object-contain" : "object-cover",
-                  frontPosition,
-                )}
+                alt={category.title}
                 sizes={imageSizes}
+                position={frontPosition}
+                scale={category.imageScale}
+                focus={category.imageFocus}
               />
             </>
           )}
