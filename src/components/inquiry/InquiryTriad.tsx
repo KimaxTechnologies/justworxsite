@@ -71,7 +71,7 @@ export function InquiryTriad({ className, activeChannel }: InquiryTriadProps) {
                 <h3 className="font-heading text-2xl text-espresso md:text-3xl">
                   {channel.title}
                 </h3>
-                <p className="mt-3 font-sans text-sm font-normal leading-relaxed text-espresso/85 md:text-base">
+                <p className="mt-3 font-sans text-sm font-medium leading-relaxed text-espresso/90 md:text-base">
                   {channel.description}
                 </p>
               </div>

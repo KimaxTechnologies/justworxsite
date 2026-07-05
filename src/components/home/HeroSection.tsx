@@ -47,15 +47,15 @@ export function HeroSection() {
             priority
             quality={100}
             unoptimized
-            className="object-cover object-[58%_center] md:object-[56%_center]"
+            className="object-cover object-[62%_48%] md:object-[60%_50%]"
             sizes="100vw"
           />
         </motion.div>
 
         <div
-          className="absolute inset-y-0 left-0 w-[46%]"
+          className="absolute inset-y-0 left-0 w-[42%]"
           style={{
-            background: `linear-gradient(90deg, ${heroTaupe} 0%, color-mix(in srgb, ${heroTaupe} 90%, transparent) 75%, transparent 100%)`,
+            background: `linear-gradient(90deg, color-mix(in srgb, ${heroTaupe} 42%, transparent) 0%, color-mix(in srgb, ${heroTaupe} 18%, transparent) 70%, transparent 100%)`,
           }}
         />
 
@@ -63,7 +63,7 @@ export function HeroSection() {
           className="absolute inset-0 md:hidden"
           style={{
             background:
-              "linear-gradient(to bottom, color-mix(in srgb, #dad0c9 35%, transparent) 0%, transparent 40%, color-mix(in srgb, #dad0c9 50%, transparent) 100%)",
+              "linear-gradient(to bottom, color-mix(in srgb, #dad0c9 28%, transparent) 0%, transparent 38%, color-mix(in srgb, #dad0c9 42%, transparent) 100%)",
           }}
         />
 
@@ -117,7 +117,7 @@ export function HeroSection() {
           </motion.div>
 
           <motion.p
-            className="max-w-[16rem] font-sans text-sm font-light leading-relaxed text-espresso/85 sm:max-w-xs sm:text-base md:max-w-[15rem] md:text-right lg:max-w-xs lg:text-lg"
+            className="max-w-[16rem] font-sans text-sm font-medium leading-relaxed text-espresso/85 sm:max-w-xs sm:text-base md:max-w-[15rem] md:text-right lg:max-w-xs lg:text-lg"
             initial={prefersReducedMotion ? false : fadeUp.hidden}
             animate={prefersReducedMotion ? undefined : fadeUp.visible}
             transition={{ delay: 4.6 }}

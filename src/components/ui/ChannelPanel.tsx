@@ -5,6 +5,7 @@ import { TactilePanel } from "@/components/ui/TactilePanel";
 import type { SurfaceId } from "@/lib/design/surfaces";
 import {
   floralCardHoverClass,
+  floralCardLightWashClass,
   floralCardScrimClass,
   floralCardTextureOrigin,
 } from "@/lib/design/lookbook-textures";
@@ -61,6 +62,13 @@ export function ChannelPanel({
             className={cn(
               "pointer-events-none absolute inset-0",
               floralCardScrimClass,
+            )}
+            aria-hidden
+          />
+          <div
+            className={cn(
+              "pointer-events-none absolute inset-0",
+              floralCardLightWashClass,
             )}
             aria-hidden
           />

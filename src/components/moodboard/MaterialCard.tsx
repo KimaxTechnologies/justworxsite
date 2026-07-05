@@ -7,6 +7,7 @@ import Link from "next/link";
 import type { Category } from "@/lib/content/categories";
 import {
   floralCardHoverClass,
+  floralCardLightWashClass,
   floralCardScrimClass,
   floralCardTextureOrigin,
   getCategoryCardTexture,
@@ -32,7 +33,7 @@ function ScaledTextureImage({
   sizes: string;
 }) {
   return (
-    <div className="absolute inset-0 overflow-hidden">
+    <div className="absolute inset-0 overflow-hidden" aria-hidden>
       <Image
         src={src}
         alt=""
@@ -57,10 +58,10 @@ export function MaterialCard({ category, index = 0, className }: MaterialCardPro
   const prefersReducedMotion = useReducedMotion();
   const isOffset = index % 2 === 1;
   const tilt = index % 3 === 0 ? 0.25 : index % 3 === 1 ? -0.2 : 0.1;
-  const { src: textureSrc, position: texturePosition, scale: textureScale } =
+  const { src: textureSrc, position: texturePosition } =
     getCategoryCardTexture(index);
   const isFloralCard = isFloralCategoryCard(index);
-  const usesTextureFront = !category.image;
+  const isFloralTextureCard = isFloralCard && !category.image;
   const frontSrc = category.image ?? textureSrc;
   const frontFit = category.imageFit ?? "cover";
   const frontPosition = category.image
@@ -87,7 +88,6 @@ export function MaterialCard({ category, index = 0, className }: MaterialCardPro
         <ScaledTextureImage
           src={textureSrc}
           position={texturePosition}
-          scale={isFloralCard ? textureScale : undefined}
           sizes={imageSizes}
         />
       </div>
@@ -95,36 +95,45 @@ export function MaterialCard({ category, index = 0, className }: MaterialCardPro
       <Link
         href={`/work?category=${category.id}`}
         className={cn(
-          "panel-raised moodboard-frame relative block overflow-hidden bg-canvas",
+          "panel-raised moodboard-frame relative block overflow-hidden",
+          isFloralTextureCard ? "bg-transparent" : "bg-canvas",
           isFloralCard
             ? floralCardHoverClass
             : "transition-transform duration-500 group-hover:-translate-y-0.5",
         )}
         style={{ rotate: `${tilt}deg` }}
       >
+        {isFloralTextureCard && (
+          <>
+            <ScaledTextureImage
+              src={textureSrc}
+              position={texturePosition}
+              sizes={imageSizes}
+            />
+            <div
+              className={cn(
+                "pointer-events-none absolute inset-0 z-[1]",
+                floralCardScrimClass,
+              )}
+              aria-hidden
+            />
+            <div
+              className={cn(
+                "pointer-events-none absolute inset-0 z-[1]",
+                floralCardLightWashClass,
+              )}
+              aria-hidden
+            />
+          </>
+        )}
+
         <div
           className={cn(
             "relative aspect-[4/5] overflow-hidden",
-            frontFit !== "contain" && "bg-canvas",
+            !isFloralTextureCard && frontFit !== "contain" && "bg-canvas",
           )}
         >
-          {usesTextureFront && isFloralCard ? (
-            <>
-              <ScaledTextureImage
-                src={textureSrc}
-                position={texturePosition}
-                scale={textureScale}
-                sizes={imageSizes}
-              />
-              <div
-                className={cn(
-                  "pointer-events-none absolute inset-0 z-[1]",
-                  floralCardScrimClass,
-                )}
-                aria-hidden
-              />
-            </>
-          ) : (
+          {!isFloralTextureCard && (
             <>
               {frontFit === "contain" && (
                 <ScaledTextureImage
@@ -147,10 +156,12 @@ export function MaterialCard({ category, index = 0, className }: MaterialCardPro
               />
             </>
           )}
-          <div
-            className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-t from-canvas/25 via-transparent to-canvas/5"
-            aria-hidden
-          />
+          {!isFloralTextureCard && (
+            <div
+              className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-t from-canvas/25 via-transparent to-canvas/5"
+              aria-hidden
+            />
+          )}
           <div
             className="absolute -right-px top-6 z-10 h-14 w-1.5 bg-canvas/90"
             style={{ clipPath: "polygon(0 5%, 100% 0, 100% 95%, 0 100%)" }}
@@ -167,7 +178,14 @@ export function MaterialCard({ category, index = 0, className }: MaterialCardPro
           />
         </div>
 
-        <div className="border-t border-stone/15 bg-canvas px-5 py-5">
+        <div
+          className={cn(
+            "relative z-10 px-5 py-5",
+            isFloralTextureCard
+              ? "border-t border-stone/15"
+              : "border-t border-stone/15 bg-canvas",
+          )}
+        >
           <span className="label-caps mb-2 block text-[0.6rem]">
             {category.id.replaceAll("-", " ")}
           </span>
@@ -177,8 +195,8 @@ export function MaterialCard({ category, index = 0, className }: MaterialCardPro
           <p
             className={cn(
               "mt-2 font-sans text-sm leading-relaxed",
-              isFloralCard && usesTextureFront
-                ? "font-normal text-espresso/85"
+              isFloralTextureCard
+                ? "font-medium text-espresso/90"
                 : "font-light text-taupe",
             )}
           >

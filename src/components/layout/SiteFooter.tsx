@@ -16,7 +16,7 @@ export function SiteFooter() {
             >
               {siteConfig.name}
             </Link>
-            <p className="mt-4 max-w-xs font-sans text-sm font-light leading-relaxed text-taupe">
+            <p className="mt-4 max-w-xs font-sans text-sm font-medium leading-relaxed text-taupe">
               {siteConfig.description}
             </p>
           </div>
