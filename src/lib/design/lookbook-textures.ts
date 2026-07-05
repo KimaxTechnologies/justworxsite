@@ -50,7 +50,7 @@ export const lookbookTextures: Record<
 
 export const categoryCardTextures = {
   gold: "/lookbook/textures/card-floral-gold.png",
-  cream: "/lookbook/textures/card-floral-cream.png",
+  plaster: "/lookbook/textures/card-plaster.png",
 } as const;
 
 export function getCategoryCardTexture(index: number): {
@@ -65,8 +65,8 @@ export function getCategoryCardTexture(index: number): {
   }
 
   return {
-    src: categoryCardTextures.cream,
-    position: "object-center",
+    src: categoryCardTextures.plaster,
+    position: "object-[42%_center]",
   };
 }
 
