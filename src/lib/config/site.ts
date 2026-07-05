@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Justworx",
   tagline: "Objects made for the moments that matter",
   description:
-    "Premium custom laser engraving and handcrafted artistry in South Africa. Signature gifts, signage, wall art, and one-of-a-kind pieces — never mass-produced.",
+    "Premium custom laser engraving and handcrafted artistry in South Africa. Signature gifts, signage, wall art, and one-of-a-kind pieces — never seen before.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://justworx.co.za",
   whatsapp: {
     number: "27722730883",
