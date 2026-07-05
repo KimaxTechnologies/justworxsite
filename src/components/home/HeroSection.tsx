@@ -25,13 +25,13 @@ export function HeroSection() {
         aria-hidden
       >
         <motion.div
-          className="absolute inset-[-2%] will-change-transform"
+          className="absolute inset-0 will-change-transform"
           animate={
             prefersReducedMotion
               ? undefined
               : {
-                  y: [0, -10, 0, 6, 0],
-                  rotate: [0, 0.15, 0, -0.12, 0],
+                  y: [0, -8, 0, 5, 0],
+                  rotate: [0, 0.1, 0, -0.08, 0],
                 }
           }
           transition={{
@@ -47,7 +47,7 @@ export function HeroSection() {
             priority
             quality={100}
             unoptimized
-            className="object-cover object-[62%_48%] md:object-[60%_50%]"
+            className="object-contain object-center"
             sizes="100vw"
           />
         </motion.div>
