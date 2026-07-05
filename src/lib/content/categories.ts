@@ -68,8 +68,7 @@ export const categories: Category[] = [
       "Natural stone etched with names, dates, and sacred geometry.",
     surface: "stone",
     image: "/categories/stone.jpg",
-    imageScale: 1.38,
-    imageFocus: "center 42%",
+    imageScale: 1,
   },
   {
     id: "spiritual-decor",

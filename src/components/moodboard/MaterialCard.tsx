@@ -45,10 +45,14 @@ function CategoryPhotoImage({
       fill
       unoptimized
       className={cn("z-[1] object-cover", position)}
-      style={{
-        transform: `scale(${scale})`,
-        transformOrigin: focus,
-      }}
+      style={
+        scale !== 1
+          ? {
+              transform: `scale(${scale})`,
+              transformOrigin: focus,
+            }
+          : undefined
+      }
       sizes={sizes}
     />
   );
