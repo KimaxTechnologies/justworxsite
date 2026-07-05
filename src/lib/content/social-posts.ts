@@ -41,7 +41,7 @@ export const socialPosts: SocialPost[] = [
     permalink:
       "https://www.instagram.com/p/DLwPeD6orJ4/?igsh=YXlycTdpeWk4M2Fr",
     image: "/social/ig-4.jpg",
-    width: 771,
+    width: 819,
     height: 1024,
   },
   {
