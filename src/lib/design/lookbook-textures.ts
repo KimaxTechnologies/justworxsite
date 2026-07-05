@@ -56,11 +56,13 @@ export const categoryCardTextures = {
 export function getCategoryCardTexture(index: number): {
   src: string;
   position: string;
+  scale?: number;
 } {
   if (index % 2 === 0) {
     return {
       src: categoryCardTextures.gold,
       position: "object-[58%_12%]",
+      scale: floralCardTextureScale,
     };
   }
 
@@ -69,6 +71,19 @@ export function getCategoryCardTexture(index: number): {
     position: "object-[42%_center]",
   };
 }
+
+export const floralCardTextureScale = 0.82;
+export const floralCardTextureOrigin = "58% 12%";
+
+export function isFloralCategoryCard(index: number): boolean {
+  return index % 2 === 0;
+}
+
+export const floralCardScrimClass =
+  "bg-gradient-to-r from-canvas/88 via-canvas/68 to-canvas/30";
+
+export const floralCardHoverClass =
+  "shadow-[2px_8px_24px_color-mix(in_srgb,var(--espresso)_6%,transparent)] transition-[transform,box-shadow] duration-500 hover:-translate-y-1 hover:shadow-[4px_14px_34px_color-mix(in_srgb,var(--espresso)_11%,transparent)]";
 
 const categoryTextureMap: Record<CategoryId, LookbookTextureId> = {
   gifts: "stone-panel",

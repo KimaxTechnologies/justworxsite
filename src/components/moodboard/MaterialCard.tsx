@@ -4,8 +4,14 @@ import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
-import { getCategoryCardTexture } from "@/lib/design/lookbook-textures";
 import type { Category } from "@/lib/content/categories";
+import {
+  floralCardHoverClass,
+  floralCardScrimClass,
+  floralCardTextureOrigin,
+  getCategoryCardTexture,
+  isFloralCategoryCard,
+} from "@/lib/design/lookbook-textures";
 import { cn } from "@/lib/utils";
 
 type MaterialCardProps = {
@@ -14,18 +20,54 @@ type MaterialCardProps = {
   className?: string;
 };
 
+function ScaledTextureImage({
+  src,
+  position,
+  scale,
+  sizes,
+}: {
+  src: string;
+  position: string;
+  scale?: number;
+  sizes: string;
+}) {
+  return (
+    <div className="absolute inset-0 overflow-hidden">
+      <Image
+        src={src}
+        alt=""
+        fill
+        unoptimized
+        className={cn("object-cover", position)}
+        style={
+          scale
+            ? {
+                transform: `scale(${scale})`,
+                transformOrigin: floralCardTextureOrigin,
+              }
+            : undefined
+        }
+        sizes={sizes}
+      />
+    </div>
+  );
+}
+
 export function MaterialCard({ category, index = 0, className }: MaterialCardProps) {
   const prefersReducedMotion = useReducedMotion();
   const isOffset = index % 2 === 1;
   const tilt = index % 3 === 0 ? 0.25 : index % 3 === 1 ? -0.2 : 0.1;
-  const { src: textureSrc, position: texturePosition } =
+  const { src: textureSrc, position: texturePosition, scale: textureScale } =
     getCategoryCardTexture(index);
+  const isFloralCard = isFloralCategoryCard(index);
+  const usesTextureFront = !category.image;
   const frontSrc = category.image ?? textureSrc;
   const frontFit = category.imageFit ?? "cover";
   const frontPosition = category.image
     ? "object-center"
     : texturePosition;
   const overflowShift = index % 2 === 0 ? { x: 10, y: 14 } : { x: -8, y: 12 };
+  const imageSizes = "(max-width: 768px) 50vw, 25vw";
 
   return (
     <motion.div
@@ -42,19 +84,22 @@ export function MaterialCard({ category, index = 0, className }: MaterialCardPro
         }}
         aria-hidden
       >
-        <Image
+        <ScaledTextureImage
           src={textureSrc}
-          alt=""
-          fill
-          unoptimized
-          className={cn("object-cover", texturePosition)}
-          sizes="(max-width: 768px) 50vw, 25vw"
+          position={texturePosition}
+          scale={isFloralCard ? textureScale : undefined}
+          sizes={imageSizes}
         />
       </div>
 
       <Link
         href={`/work?category=${category.id}`}
-        className="panel-raised moodboard-frame relative block overflow-hidden bg-canvas transition-transform duration-500 group-hover:-translate-y-0.5"
+        className={cn(
+          "panel-raised moodboard-frame relative block overflow-hidden bg-canvas",
+          isFloralCard
+            ? floralCardHoverClass
+            : "transition-transform duration-500 group-hover:-translate-y-0.5",
+        )}
         style={{ rotate: `${tilt}deg` }}
       >
         <div
@@ -63,31 +108,47 @@ export function MaterialCard({ category, index = 0, className }: MaterialCardPro
             frontFit !== "contain" && "bg-canvas",
           )}
         >
-          {frontFit === "contain" && (
-            <Image
-              src={textureSrc}
-              alt=""
-              fill
-              unoptimized
-              className={cn("object-cover", texturePosition)}
-              sizes="(max-width: 768px) 50vw, 25vw"
-              aria-hidden
-            />
+          {usesTextureFront && isFloralCard ? (
+            <>
+              <ScaledTextureImage
+                src={textureSrc}
+                position={texturePosition}
+                scale={textureScale}
+                sizes={imageSizes}
+              />
+              <div
+                className={cn(
+                  "pointer-events-none absolute inset-0 z-[1]",
+                  floralCardScrimClass,
+                )}
+                aria-hidden
+              />
+            </>
+          ) : (
+            <>
+              {frontFit === "contain" && (
+                <ScaledTextureImage
+                  src={textureSrc}
+                  position={texturePosition}
+                  sizes={imageSizes}
+                />
+              )}
+              <Image
+                src={frontSrc}
+                alt={category.image ? category.title : ""}
+                fill
+                unoptimized
+                className={cn(
+                  "z-[1]",
+                  frontFit === "contain" ? "object-contain" : "object-cover",
+                  frontPosition,
+                )}
+                sizes={imageSizes}
+              />
+            </>
           )}
-          <Image
-            src={frontSrc}
-            alt={category.image ? category.title : ""}
-            fill
-            unoptimized
-            className={cn(
-              "z-[1]",
-              frontFit === "contain" ? "object-contain" : "object-cover",
-              frontPosition,
-            )}
-            sizes="(max-width: 768px) 50vw, 25vw"
-          />
           <div
-            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-canvas/25 via-transparent to-canvas/5"
+            className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-t from-canvas/25 via-transparent to-canvas/5"
             aria-hidden
           />
           <div
@@ -101,7 +162,7 @@ export function MaterialCard({ category, index = 0, className }: MaterialCardPro
             aria-hidden
           />
           <div
-            className="pointer-events-none absolute inset-2 border border-stone/12"
+            className="pointer-events-none absolute inset-2 z-[3] border border-stone/12"
             aria-hidden
           />
         </div>
@@ -113,7 +174,14 @@ export function MaterialCard({ category, index = 0, className }: MaterialCardPro
           <h3 className="font-heading text-xl text-espresso md:text-2xl">
             {category.title}
           </h3>
-          <p className="mt-2 font-sans text-sm font-light leading-relaxed text-taupe">
+          <p
+            className={cn(
+              "mt-2 font-sans text-sm leading-relaxed",
+              isFloralCard && usesTextureFront
+                ? "font-normal text-espresso/85"
+                : "font-light text-taupe",
+            )}
+          >
             {category.description}
           </p>
           <span className="mt-4 inline-block h-px w-0 bg-wood/50 transition-all duration-500 group-hover:w-8" />
