@@ -79,7 +79,7 @@ export function SiteFooter() {
             © {year} {siteConfig.name}. Crafted in South Africa.
           </p>
           <p className="font-sans text-xs text-taupe">
-            Signature pieces · Never seen before
+            Signature pieces · Elevate, Inspire & Redefine
           </p>
         </div>
       </div>

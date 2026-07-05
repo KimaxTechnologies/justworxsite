@@ -34,8 +34,7 @@ export const categories: Category[] = [
     description:
       "Refined markers of presence — your brand, your space, your name.",
     surface: "paper",
-    image: "/categories/signage.png",
-    imageFit: "contain",
+    image: "/categories/signage.jpg",
   },
   {
     id: "wall-art",

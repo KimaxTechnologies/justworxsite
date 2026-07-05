@@ -9,6 +9,8 @@ import { socialPosts } from "@/lib/content/social-posts";
 import { staggerContainer, fadeUp } from "@/lib/motion/variants";
 import { cn } from "@/lib/utils";
 
+const linenTexture = "/lookbook/textures/linen-fabric.png";
+
 export function CuratedFeed() {
   const prefersReducedMotion = useReducedMotion();
 
@@ -28,10 +30,18 @@ export function CuratedFeed() {
             target="_blank"
             rel="noopener noreferrer"
             variants={prefersReducedMotion ? undefined : fadeUp}
-            className="panel-raised moodboard-frame group relative flex aspect-[4/5] items-center justify-center overflow-hidden bg-linen p-4 transition-transform duration-500 hover:-translate-y-0.5 md:p-5"
+            className="panel-raised moodboard-frame group relative flex aspect-[4/5] items-center justify-center overflow-hidden p-4 transition-transform duration-500 hover:-translate-y-0.5 md:p-5"
             style={index % 3 === 1 ? { marginTop: "0.5rem" } : undefined}
             aria-label={post.alt}
           >
+            <Image
+              src={linenTexture}
+              alt=""
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 42vw, 28vw"
+              aria-hidden
+            />
             <Image
               src={post.image}
               alt={post.alt}
@@ -39,7 +49,7 @@ export function CuratedFeed() {
               height={post.height}
               unoptimized
               className={cn(
-                "h-auto w-auto object-contain",
+                "relative z-10 h-auto w-auto object-contain",
                 index % 3 === 1
                   ? "max-h-[92%] max-w-[92%]"
                   : "max-h-full max-w-full",
