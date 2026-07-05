@@ -17,7 +17,7 @@ const heroReadableTextShadow =
   "[text-shadow:0_0_20px_color-mix(in_srgb,var(--canvas)_95%,transparent),0_1px_2px_color-mix(in_srgb,var(--canvas)_80%,transparent)]";
 
 const heroSubheadlineClass =
-  "max-w-[16rem] font-sans text-sm font-light leading-snug text-espresso sm:max-w-[17rem] sm:text-base md:max-w-[18.5rem] md:self-end md:text-right lg:max-w-[19rem] lg:text-base";
+  "max-w-[16rem] font-heading text-sm font-normal leading-snug tracking-tight text-espresso sm:max-w-[17rem] sm:text-base md:max-w-[18.5rem] md:self-end md:text-right lg:max-w-[19rem] lg:text-base";
 
 export function HeroSection() {
   const prefersReducedMotion = useReducedMotion();
