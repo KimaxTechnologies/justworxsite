@@ -27,17 +27,19 @@ export function CuratedFeed() {
             target="_blank"
             rel="noopener noreferrer"
             variants={prefersReducedMotion ? undefined : fadeUp}
-            className="panel-raised moodboard-frame group relative block aspect-square overflow-hidden bg-canvas transition-transform duration-500 hover:-translate-y-0.5"
+            className="panel-raised moodboard-frame group relative block aspect-square overflow-hidden bg-linen transition-transform duration-500 hover:-translate-y-0.5"
             style={index % 3 === 1 ? { marginTop: "0.5rem" } : undefined}
             aria-label={post.alt}
           >
-            <Image
-              src={post.image}
-              alt={post.alt}
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 50vw, 33vw"
-            />
+            <div className="absolute inset-3 md:inset-3.5">
+              <Image
+                src={post.image}
+                alt={post.alt}
+                fill
+                className="object-contain"
+                sizes="(max-width: 768px) 50vw, 33vw"
+              />
+            </div>
             <div className="absolute inset-0 z-20 flex items-center justify-center bg-espresso/0 transition-colors duration-300 group-hover:bg-espresso/8">
               <InstagramIcon className="size-5 text-canvas opacity-0 drop-shadow-sm transition-opacity duration-300 group-hover:opacity-80" />
             </div>
