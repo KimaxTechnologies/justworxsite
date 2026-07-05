@@ -66,28 +66,35 @@ export function HeroSection() {
               "linear-gradient(to bottom, color-mix(in srgb, #dad0c9 35%, transparent) 0%, transparent 40%, color-mix(in srgb, #dad0c9 50%, transparent) 100%)",
           }}
         />
+
+        <div
+          className="absolute inset-x-0 bottom-0 h-16 md:h-20"
+          style={{
+            background: `linear-gradient(to bottom, transparent, ${heroTaupe})`,
+          }}
+        />
       </div>
 
       <div className="relative z-10 flex min-h-[100svh] flex-col px-6 pb-28 pt-28 md:px-10 md:pb-16 md:pt-32">
-        <div className="flex flex-1 flex-col">
-          <motion.p
-            className="label-caps mb-5 max-w-xs text-espresso/75 md:absolute md:left-[6%] md:top-[20%] md:mb-0 lg:left-[7%]"
-            initial={prefersReducedMotion ? false : fadeUp.hidden}
-            animate={prefersReducedMotion ? undefined : fadeUp.visible}
-            transition={{ delay: 0.1 }}
-          >
-            {homeCopy.hero.eyebrow}
-          </motion.p>
+        <motion.p
+          className="label-caps mb-5 max-w-xs text-espresso/75 md:absolute md:left-[6%] md:top-[20%] md:mb-0 lg:left-[7%]"
+          initial={prefersReducedMotion ? false : fadeUp.hidden}
+          animate={prefersReducedMotion ? undefined : fadeUp.visible}
+          transition={{ delay: 0.1 }}
+        >
+          {homeCopy.hero.eyebrow}
+        </motion.p>
 
-          <TypewriterText
-            text={homeCopy.hero.headline}
-            as="h1"
-            className="font-heading max-w-[11rem] text-[2rem] leading-[1.1] text-espresso sm:max-w-sm sm:text-[2.35rem] md:absolute md:left-[6%] md:top-[26%] md:max-w-md md:text-5xl lg:left-[7%] lg:max-w-lg lg:text-6xl xl:max-w-xl xl:text-[4.25rem]"
-            startDelayMs={500}
-          />
+        <TypewriterText
+          text={homeCopy.hero.headline}
+          as="h1"
+          className="font-heading max-w-[11rem] text-[2rem] leading-[1.1] text-espresso sm:max-w-sm sm:text-[2.35rem] md:absolute md:left-[6%] md:top-[26%] md:max-w-md md:text-5xl lg:left-[7%] lg:max-w-lg lg:text-6xl xl:max-w-xl xl:text-[4.25rem]"
+          startDelayMs={500}
+        />
 
+        <div className="mt-auto flex flex-col gap-10 md:absolute md:inset-x-[6%] md:bottom-[8%] md:flex-row md:items-center md:justify-between md:gap-8 lg:inset-x-[7%]">
           <motion.div
-            className="mt-12 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4 md:absolute md:left-[6%] md:top-[72%] md:mt-0 lg:left-[7%]"
+            className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4"
             initial={prefersReducedMotion ? false : fadeUp.hidden}
             animate={prefersReducedMotion ? undefined : fadeUp.visible}
             transition={{ delay: 2.8 }}
@@ -107,16 +114,16 @@ export function HeroSection() {
               {homeCopy.hero.ctaSecondary}
             </Link>
           </motion.div>
-        </div>
 
-        <motion.p
-          className="mt-auto max-w-[16rem] self-end text-right font-sans text-sm font-light leading-relaxed text-espresso/85 sm:max-w-xs sm:text-base md:absolute md:bottom-[8%] md:right-[6%] md:max-w-[15rem] lg:right-[7%] lg:max-w-xs lg:text-lg"
-          initial={prefersReducedMotion ? false : fadeUp.hidden}
-          animate={prefersReducedMotion ? undefined : fadeUp.visible}
-          transition={{ delay: 3.2 }}
-        >
-          {homeCopy.hero.subheadline}
-        </motion.p>
+          <motion.p
+            className="max-w-[16rem] font-sans text-sm font-light leading-relaxed text-espresso/85 sm:max-w-xs sm:text-base md:max-w-[15rem] md:text-right lg:max-w-xs lg:text-lg"
+            initial={prefersReducedMotion ? false : fadeUp.hidden}
+            animate={prefersReducedMotion ? undefined : fadeUp.visible}
+            transition={{ delay: 3.2 }}
+          >
+            {homeCopy.hero.subheadline}
+          </motion.p>
+        </div>
       </div>
     </section>
   );
