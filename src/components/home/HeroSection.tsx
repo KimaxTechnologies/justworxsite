@@ -16,11 +16,8 @@ const heroTaupe = "#dad0c9";
 const heroReadableTextShadow =
   "[text-shadow:0_0_20px_color-mix(in_srgb,var(--canvas)_95%,transparent),0_1px_2px_color-mix(in_srgb,var(--canvas)_80%,transparent)]";
 
-const heroSubheadlineLeadShadow =
-  "[text-shadow:0_0_24px_color-mix(in_srgb,var(--wood)_55%,transparent),0_0_10px_color-mix(in_srgb,var(--wood)_40%,transparent),0_1px_2px_color-mix(in_srgb,var(--espresso)_60%,transparent)]";
-
-const heroSubheadlineClass =
-  "max-w-[16rem] font-sans text-sm font-light leading-snug text-espresso sm:max-w-[17rem] sm:text-base md:max-w-[18.5rem] md:self-end md:text-right lg:max-w-[19rem] lg:text-base";
+const heroSubheadlinePanelClass =
+  "max-w-[16rem] bg-canvas/30 px-4 py-3 text-right font-sans text-sm font-light leading-snug text-espresso sm:max-w-[17rem] sm:px-4 sm:py-3.5 sm:text-base md:max-w-[19rem] md:self-end md:px-5 md:py-4 lg:max-w-[21rem] lg:text-base";
 
 export function HeroSection() {
   const prefersReducedMotion = useReducedMotion();
@@ -132,15 +129,16 @@ export function HeroSection() {
           </motion.div>
 
           <motion.p
-            className={heroSubheadlineClass}
+            className={heroSubheadlinePanelClass}
             initial={prefersReducedMotion ? false : fadeUp.hidden}
             animate={prefersReducedMotion ? undefined : fadeUp.visible}
             transition={{ delay: 4.6 }}
           >
-            <span className={cn("block", heroSubheadlineLeadShadow)}>
-              {homeCopy.hero.subheadlineLead}
-            </span>
-            <span className="mt-1 block">{homeCopy.hero.subheadlineRest}</span>
+            {homeCopy.hero.subheadlineLines.map((line) => (
+              <span key={line} className="block">
+                {line}
+              </span>
+            ))}
           </motion.p>
         </div>
       </div>
