@@ -9,12 +9,12 @@ const heroTaupe = "#dad0c9";
 export function DifferentiatorsSection() {
   return (
     <section
-      className="relative z-0 overflow-hidden pb-14 pt-10 md:pb-20 md:pt-12"
+      className="relative z-0 flex min-h-[clamp(18rem,40vh,30rem)] items-center overflow-hidden py-14 md:min-h-[clamp(20rem,44vh,34rem)] md:py-16"
       style={{
-        background: `linear-gradient(180deg, ${heroTaupe} 0%, #e4dcd4 10%, #ede8e1 24%, var(--canvas) 48%)`,
+        background: `linear-gradient(180deg, ${heroTaupe} 0%, #e4dcd4 14%, #ede8e1 50%, var(--canvas) 100%)`,
       }}
     >
-      <div className="editorial-container relative">
+      <div className="editorial-container relative w-full">
         <div className="grid gap-4 md:grid-cols-3 md:gap-5">
           {homeCopy.differentiators.map((item, index) => (
             <ScrollReveal key={item.title} delay={index * 0.08}>

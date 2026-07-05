@@ -6,7 +6,7 @@ import { homeCopy } from "@/lib/content/copy";
 
 export function CategoriesSection() {
   return (
-    <SectionShell className="pt-20 pb-32 md:pt-24 md:pb-40" innerClassName="editorial-container">
+    <SectionShell className="pt-14 pb-32 md:pt-16 md:pb-40" innerClassName="editorial-container">
       <SectionHeading
         eyebrow={homeCopy.categories.eyebrow}
         headline={homeCopy.categories.headline}
