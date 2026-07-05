@@ -126,10 +126,7 @@ export function HeroSection() {
           </motion.div>
 
           <motion.p
-            className={cn(
-              "max-w-[16rem] font-sans text-sm font-bold leading-relaxed text-espresso sm:max-w-xs sm:text-base md:max-w-[17rem] md:text-right lg:max-w-xs lg:text-lg",
-              heroReadableTextShadow,
-            )}
+            className="max-w-[16rem] font-sans text-sm font-bold leading-relaxed text-espresso sm:max-w-xs sm:text-base md:max-w-[17rem] md:text-right lg:max-w-xs lg:text-lg"
             initial={prefersReducedMotion ? false : fadeUp.hidden}
             animate={prefersReducedMotion ? undefined : fadeUp.visible}
             transition={{ delay: 4.6 }}
