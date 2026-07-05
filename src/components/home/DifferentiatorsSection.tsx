@@ -14,29 +14,31 @@ export function DifferentiatorsSection() {
         background: `linear-gradient(180deg, ${heroTaupe} 0%, #e4dcd4 14%, #ede8e1 50%, var(--canvas) 100%)`,
       }}
     >
-      <div className="relative w-full px-5 sm:px-8 lg:px-12 xl:px-16">
-        <div className="mx-auto grid w-full max-w-[90rem] grid-cols-1 gap-5 sm:grid-cols-3 sm:gap-6 lg:gap-8 xl:gap-10">
+      <div className="relative mx-auto w-full max-w-[92rem] px-4 sm:px-6 md:px-8 lg:px-10">
+        <div className="flex w-full flex-col gap-4 md:flex-row md:gap-6 lg:gap-8">
           {homeCopy.differentiators.map((item, index) => (
-            <ScrollReveal key={item.title} className="w-full" delay={index * 0.08}>
-              <div className="panel-raised moodboard-frame relative aspect-[5/4] w-full overflow-hidden sm:aspect-[4/3]">
+            <ScrollReveal
+              key={item.title}
+              className="min-w-0 flex-1"
+              delay={index * 0.08}
+            >
+              <div className="panel-raised moodboard-frame relative min-h-[188px] w-full overflow-hidden md:min-h-[200px]">
                 <Image
                   src={linenTexture}
                   alt=""
                   fill
                   className="object-cover"
-                  sizes="(max-width: 640px) 100vw, 33vw"
+                  sizes="(max-width: 768px) 100vw, 33vw"
                   priority={index === 0}
                 />
-                <div className="relative z-10 flex h-full flex-col justify-between px-7 py-7 md:px-8 md:py-8 lg:px-9">
-                  <div>
-                    <h3 className="font-heading text-lg text-espresso md:text-xl lg:text-[1.35rem]">
-                      {item.title}
-                    </h3>
-                    <p className="mt-3 font-sans text-sm font-light leading-relaxed text-espresso/80 md:text-[0.95rem]">
-                      {item.description}
-                    </p>
-                  </div>
-                  <span className="mt-5 inline-block h-px w-10 bg-espresso/35" />
+                <div className="relative z-10 flex h-full flex-col px-7 py-7 md:px-8 md:py-8">
+                  <h3 className="font-heading text-lg text-espresso md:text-xl">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 flex-1 font-sans text-sm font-light leading-relaxed text-espresso/80">
+                    {item.description}
+                  </p>
+                  <span className="mt-4 inline-block h-px w-8 bg-espresso/35" />
                 </div>
               </div>
             </ScrollReveal>
