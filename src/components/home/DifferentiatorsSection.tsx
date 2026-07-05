@@ -14,8 +14,8 @@ export function DifferentiatorsSection() {
         background: `linear-gradient(180deg, ${heroTaupe} 0%, #e4dcd4 14%, #ede8e1 50%, var(--canvas) 100%)`,
       }}
     >
-      <div className="relative mx-auto w-full max-w-[92rem] px-4 sm:px-6 md:px-8 lg:px-10">
-        <div className="flex w-full flex-col gap-4 md:flex-row md:gap-6 lg:gap-8">
+      <div className="relative w-full px-5 md:px-6 lg:px-5 xl:px-6 2xl:px-8">
+        <div className="flex w-full flex-col gap-4 md:flex-row md:gap-5 lg:gap-6 xl:gap-7">
           {homeCopy.differentiators.map((item, index) => (
             <ScrollReveal
               key={item.title}
