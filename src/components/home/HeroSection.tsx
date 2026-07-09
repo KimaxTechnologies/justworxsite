@@ -17,7 +17,7 @@ const heroReadableTextShadow =
   "[text-shadow:0_0_20px_color-mix(in_srgb,var(--canvas)_95%,transparent),0_1px_2px_color-mix(in_srgb,var(--canvas)_80%,transparent)]";
 
 const heroSubheadlinePanelClass =
-  "relative bg-canvas/30 py-3 pl-4 pr-6 text-right font-sans text-sm font-light leading-snug text-espresso sm:py-3.5 sm:text-base md:ml-auto md:min-w-[min(100%,22rem)] md:max-w-[38vw] md:py-4 md:pl-10 md:pr-[calc(2.5rem+6%+1.25rem)] md:mr-[calc(-2.5rem-6%)] lg:min-w-[min(100%,24rem)] lg:max-w-[34vw] lg:pr-[calc(2.5rem+7%+1.25rem)] lg:mr-[calc(-2.5rem-7%)] lg:text-base";
+  "w-full bg-canvas/30 px-4 py-3 font-sans text-sm font-light leading-snug text-espresso sm:px-5 sm:py-3.5 sm:text-base md:ml-auto md:w-auto md:min-w-[min(100%,22rem)] md:max-w-[38vw] md:py-4 md:pl-10 md:pr-[calc(2.5rem+6%+1.25rem)] md:text-right md:mr-[calc(-2.5rem-6%)] lg:min-w-[min(100%,24rem)] lg:max-w-[34vw] lg:pr-[calc(2.5rem+7%+1.25rem)] lg:mr-[calc(-2.5rem-7%)] lg:text-base";
 
 const heroSubheadlineSlide = {
   hidden: { opacity: 0, x: "110%" },
@@ -89,10 +89,10 @@ export function HeroSection() {
         />
       </div>
 
-      <div className="relative z-10 flex min-h-[100svh] flex-col px-6 pb-12 pt-28 md:px-10 md:pb-8 md:pt-32">
+      <div className="relative z-10 flex min-h-[100svh] flex-col px-5 pb-10 pt-24 md:px-10 md:pb-8 md:pt-32">
         <motion.p
           className={cn(
-            "mb-5 max-w-xs font-sans text-[0.7rem] font-bold uppercase tracking-[0.22em] text-espresso md:absolute md:left-[6%] md:top-[20%] md:mb-0 lg:left-[7%]",
+            "mb-4 max-w-xs font-sans text-[0.65rem] font-bold uppercase tracking-[0.2em] text-espresso md:absolute md:left-[6%] md:top-[20%] md:mb-0 lg:left-[7%]",
             heroReadableTextShadow,
           )}
           initial={prefersReducedMotion ? false : fadeUp.hidden}
@@ -105,12 +105,12 @@ export function HeroSection() {
         <TypewriterText
           text={homeCopy.hero.headline}
           as="h1"
-          className="font-heading max-w-[11rem] text-[2rem] leading-[1.1] text-espresso sm:max-w-sm sm:text-[2.35rem] md:absolute md:left-[6%] md:top-[26%] md:max-w-md md:text-5xl lg:left-[7%] lg:max-w-lg lg:text-6xl xl:max-w-xl xl:text-[4.25rem]"
+          className="font-heading max-w-[12rem] text-[2.45rem] leading-[1.04] text-espresso sm:max-w-sm sm:text-[2.7rem] md:absolute md:left-[6%] md:top-[26%] md:max-w-md md:text-5xl lg:left-[7%] lg:max-w-lg lg:text-6xl xl:max-w-xl xl:text-[4.25rem]"
           startDelayMs={700}
           speedMs={78}
         />
 
-        <div className="mt-auto flex flex-col items-start gap-6 md:absolute md:inset-x-[6%] md:bottom-[2.5%] md:flex-row md:items-end md:justify-between md:gap-8 lg:inset-x-[7%]">
+        <div className="mt-auto flex flex-col items-stretch gap-4 md:absolute md:inset-x-[6%] md:bottom-[2.5%] md:flex-row md:items-end md:justify-between md:gap-8 lg:inset-x-[7%]">
           <motion.div
             className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4"
             initial={prefersReducedMotion ? false : fadeUp.hidden}
@@ -121,13 +121,13 @@ export function HeroSection() {
               href={getWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-12 items-center justify-center bg-wood px-8 font-sans text-xs font-medium uppercase tracking-[0.15em] text-canvas shadow-panel transition-opacity hover:opacity-90 sm:h-11"
+              className="inline-flex h-12 w-full items-center justify-center bg-wood px-8 font-sans text-xs font-medium uppercase tracking-[0.15em] text-canvas shadow-panel transition-opacity hover:opacity-90 sm:h-11 sm:w-auto"
             >
               {homeCopy.hero.cta}
             </a>
             <Link
               href="/work"
-              className="inline-flex h-12 items-center justify-center border border-stone/30 bg-canvas/75 px-8 font-sans text-xs font-medium uppercase tracking-[0.15em] text-espresso backdrop-blur-sm transition-colors hover:bg-canvas/90 sm:h-11"
+              className="inline-flex h-12 w-full items-center justify-center border border-stone/30 bg-canvas/75 px-8 font-sans text-xs font-medium uppercase tracking-[0.15em] text-espresso backdrop-blur-sm transition-colors hover:bg-canvas/90 sm:h-11 sm:w-auto"
             >
               {homeCopy.hero.ctaSecondary}
             </Link>
@@ -136,7 +136,8 @@ export function HeroSection() {
           <motion.p
             className={cn(
               heroSubheadlinePanelClass,
-              "mr-[-1.5rem] w-[calc(100%+1.5rem)] md:w-auto",
+              "text-left md:text-right",
+              "mr-[-1.25rem] w-[calc(100%+1.25rem)] md:mr-0 md:w-auto",
             )}
             initial={prefersReducedMotion ? false : heroSubheadlineSlide.hidden}
             animate={

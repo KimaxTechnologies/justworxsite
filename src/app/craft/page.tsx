@@ -18,7 +18,7 @@ export default function CraftPage() {
   return (
     <>
       <SectionShell
-        className="pt-32 pb-20 md:pt-40 md:pb-28"
+        className="pt-28 pb-16 md:pt-40 md:pb-28"
         innerClassName="editorial-container"
       >
         <SectionHeading
@@ -36,7 +36,7 @@ export default function CraftPage() {
         </div>
       </SectionShell>
 
-      <SectionShell className="py-28 md:py-36" innerClassName="editorial-container">
+      <SectionShell className="py-20 md:py-36" innerClassName="editorial-container">
         <SectionHeading
           eyebrow="Process"
           headline="From vision to heirloom"
@@ -45,7 +45,7 @@ export default function CraftPage() {
         <ProcessTimeline />
       </SectionShell>
 
-      <SectionShell className="py-28 md:py-36" innerClassName="editorial-container">
+      <SectionShell className="py-20 md:py-36" innerClassName="editorial-container">
         <SectionHeading
           eyebrow="Materials"
           headline="Textures we trust"
@@ -59,7 +59,7 @@ export default function CraftPage() {
         </ScrollReveal>
       </SectionShell>
 
-      <SectionShell className="py-28 md:py-36" innerClassName="editorial-container">
+      <SectionShell className="py-20 md:py-36" innerClassName="editorial-container">
         <SectionHeading
           headline="Ready to begin?"
           description="Share your vision on WhatsApp or Instagram."

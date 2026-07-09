@@ -48,7 +48,7 @@ export function InquiryTriad({ className, activeChannel }: InquiryTriadProps) {
     <ScrollReveal>
       <div
         className={cn(
-          "mx-auto grid max-w-3xl gap-5 md:grid-cols-2 md:gap-8",
+          "mx-auto grid max-w-3xl gap-4 md:grid-cols-2 md:gap-8",
           className,
         )}
       >
@@ -64,20 +64,20 @@ export function InquiryTriad({ className, activeChannel }: InquiryTriadProps) {
               external={channel.external}
               texture={contactCardTexture}
               className={cn(
-                "flex min-h-[220px] flex-col justify-between p-8 md:min-h-[260px] md:p-10",
+                "flex min-h-[200px] flex-col justify-between p-6 md:min-h-[260px] md:p-10",
                 isActive && "border-stone/30",
               )}
             >
               <div>
-                <Icon className="mb-5 size-5 text-wood" />
-                <h3 className="font-heading text-2xl text-espresso md:text-3xl">
+                <Icon className="mb-4 size-5 text-wood" />
+                <h3 className="font-heading text-[1.7rem] text-espresso md:text-3xl">
                   {channel.title}
                 </h3>
                 <p className="mt-3 font-sans text-sm font-medium leading-relaxed text-espresso/90 md:text-base">
                   {channel.description}
                 </p>
               </div>
-              <span className="mt-8 inline-flex items-center gap-2 font-sans text-xs font-medium uppercase tracking-[0.18em] text-espresso transition-all group-hover:gap-3 group-hover:text-wood">
+              <span className="mt-6 inline-flex items-center gap-2 font-sans text-xs font-medium uppercase tracking-[0.18em] text-espresso transition-all group-hover:gap-3 group-hover:text-wood">
                 {channel.cta}
                 <span aria-hidden>→</span>
               </span>

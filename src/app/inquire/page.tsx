@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function InquirePage() {
   return (
     <SectionShell
-      className="flex min-h-[80svh] flex-col justify-center pt-32 pb-28 md:pt-40 md:pb-36"
+      className="flex min-h-[80svh] flex-col justify-center pt-28 pb-20 md:pt-40 md:pb-36"
       innerClassName="editorial-container"
     >
       <SectionHeading

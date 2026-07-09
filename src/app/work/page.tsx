@@ -38,7 +38,7 @@ export default async function WorkPage({ searchParams }: WorkPageProps) {
   return (
     <>
       <SectionShell
-        className="pt-32 pb-20 md:pt-40 md:pb-28"
+        className="pt-28 pb-16 md:pt-40 md:pb-28"
         innerClassName="editorial-container"
       >
         <SectionHeading
@@ -49,7 +49,7 @@ export default async function WorkPage({ searchParams }: WorkPageProps) {
         <WorkGrid initialCategory={initialCategory} />
       </SectionShell>
 
-      <SectionShell className="py-28 md:py-36" innerClassName="editorial-container">
+      <SectionShell className="py-20 md:py-36" innerClassName="editorial-container">
         <SectionHeading
           headline="Ready to begin?"
           description="Share your vision on WhatsApp or Instagram — we'll take it from there."
